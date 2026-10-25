@@ -15,3 +15,7 @@ desktop.ini
 *.tmp
 *.log
 
+secret.txt
+password.ini
+*.key
+*.pem
