@@ -16,6 +16,7 @@ desktop.ini
 *.log
 
 secret.txt
-password.ini
 *.key
 *.pem
+*.env
+password*.ini
