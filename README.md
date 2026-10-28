@@ -10,17 +10,19 @@
 
 ```
 ict-certifications/
-├── 数通-H3C NE→SE→IE 三级跃迁实战.md
-├── 数通-华为 HCIA→HCIP→HCIE 全链路通关.md
-├── 数通-思科 CCNA→CCNP→CCIE 实战通关图谱.md
-├── 数通-中兴 ZCIA→ZCIP→ZCIE 全链路实战.md
-├── 数通-浪潮 ICCA→ICCP→ICCE 三级跃迁.md
-├── 数通-迈普 MPNA→MPNP→MPIE 三级贯通.md
-├── 数通-锐捷 RGSA→RGSP→RGSE 全链路实战.md
-├── 软考-数据库系统工程师（中级）.md
-├── 软考-网络工程师（中级）.md
-├── 软考-软件设计师（中级）.md
-├── 软考-高项 信息系统项目管理师（高级）.md
+├── 数通/
+│   ├── H3C NE→SE→IE 三级跃迁实战.md
+│   ├── 华为 HCIA→HCIP→HCIE 全链路通关.md
+│   ├── 思科 CCNA→CCNP→CCIE 实战通关图谱.md
+│   ├── 中兴 ZCIA→ZCIP→ZCIE 全链路实战.md
+│   ├── 浪潮 ICCA→ICCP→ICCE 三级跃迁.md
+│   ├── 迈普 MPNA→MPNP→MPIE 三级贯通.md
+│   └── 锐捷 RGSA→RGSP→RGSE 全链路实战.md
+├── 软考/
+│   ├── 数据库系统工程师（中级）.md
+│   ├── 网络工程师（中级）.md
+│   ├── 软件设计师（中级）.md
+│   └── 高项 信息系统项目管理师（高级）.md
 ├── LICENSE            CC BY 4.0
 └── README.md
 ```
