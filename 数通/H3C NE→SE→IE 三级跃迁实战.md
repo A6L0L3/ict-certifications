@@ -4,7 +4,8 @@
 
 ---
 
-## 一、这套知识库解决什么问题
+## README · 导览
+### README_1 这套知识库解决什么问题
 大多数网络学习资料的问题不是"不全"，而是**三处断裂**：
 
 1. **原理与配置断裂**：背得下 STP 的五种端口状态，却在真机上不知道为什么 GE1/0/2 一直是 DISCARDING。
@@ -21,7 +22,7 @@
 
 ---
 
-## 二、板块清单与能力映射
+### README_2 板块清单与能力映射
 | 板块 | 标题 | 主题 | NE | SE | IE |
 | --- | --- | --- | --- | --- | --- |
 | 板块0 | 认证全景与学习路径建议 | 认证金字塔、考试科目、三阶段路线、实验环境、笔记方法 | ★★ | ★★ | ★★ |
@@ -43,8 +44,8 @@
 
 ---
 
-## 三、推荐阅读顺序
-### 阶段一：零基础 → H3CNE-RS+（约 8 周）
+### README_3 推荐阅读顺序
+#### 阶段一：零基础 → H3CNE-RS+（约 8 周）
 ```plain
 板块0 → 板块1 → 板块2 → 板块3 → 板块4 → 板块7(7_1~7_3) → 板块9(9_2~9_3)
      → 板块8(8_1) → 板块15(15_1)
@@ -52,7 +53,7 @@
 
 原则：**先保证"能配通"，再回头补安全与运维**。
 
-### 阶段二：H3CNE → H3CSE-RS+（约 4~6 个月）
+#### 阶段二：H3CNE → H3CSE-RS+（约 4~6 个月）
 ```plain
 交换线（GB0-372）：板块5 → 板块6 → 板块8(8_3~8_5) → 板块10 → 板块12 → 板块13
 路由线（GB0-382）：板块7(7_4~7_7)
@@ -61,7 +62,7 @@
 
 两条主线**建议串行**：交换与路由的思维方式不同，并行容易互相干扰。先"交换"后"路由"，最后补"广域与安全优化"。
 
-### 阶段三：H3CSE → H3CIE-RS+（约 6~12 个月）
+#### 阶段三：H3CSE → H3CIE-RS+（约 6~12 个月）
 ```plain
 主线：板块14（方法论 + 报告模板）→ 板块15（15_2、15_3、15_5）
 训练：每周 3~4 小时实验，按板块 14 的四阶段训练法推进
@@ -69,7 +70,7 @@
 
 ---
 
-## 四、使用约定
+### README_4 使用约定
 1. **命令版本**：默认基于 Comware V7。V5 设备（S3600/S5500 老版本、SecPath F1000-S 的 Version 5.20 等）的差异统一用「V5 差异」「V5 写法」标注。
 2. **配置可粘贴**：代码块中的命令可直接粘贴到设备；涉及密码、IP、端口编号、VLAN ID 的部分按实际环境替换。
 3. **验证命令不要跳过**：每个配置章节后都有对应的 `display` 验证项。H3CIE 实验考试的评分重点就是"验证习惯"。
@@ -79,7 +80,7 @@
 
 ---
 
-## 五、适配的考试科目
+### README_5 适配的考试科目
 | 认证 | 科目代码 | 主要覆盖板块 |
 | --- | --- | --- |
 | H3CNE-RS+ | GB0-192 | 板块1~5、7（基础）、8（基础）、9（基础） |
@@ -95,18 +96,18 @@
 
 ---
 
-## 六、免责与维护说明
+### README_6 免责与维护说明
 + 考试代码、费用有效期、改版通知以新华三官方最新公告为准（官网技术认证板块与「新华三技术认证」公众号）。本知识库中的考试信息整理自官方公开资料，**报考前务必复核**。考试政策在不同时期会有调整，请以当前官方口径为准。
 + 设备命令以对应型号的配置指导与命令手册为准，不同软件版本存在命令差异。
 + 生产环境变更前请务必备份配置、评估影响范围并准备回退方案（见板块15 的 15_4）。
 
-# 板块0 · 认证全景与学习路径建议
+## 板块0 · 认证全景与学习路径建议
 > 本板块解决四个问题：H3C 认证到底是什么结构、从零基础到专家该按什么顺序走、实验环境怎么搭、笔记怎么记才不白记。  
 后面所有板块都按「板块 N_M」二级编号组织，命令均可在 HCL 或真机（Comware V7）上落地。
 
 ---
 
-## 0_1 认证金字塔：三级能力模型与定位
+### 0_1 认证金字塔：三级能力模型与定位
 新华三技术认证体系覆盖路由交换、新网络（SDN）、无线、云计算、安全、服务器、存储、操作系统、工业互联网等九大技术领域，每个领域内按三个等级递进：
 
 | 等级 | 名称 | 英文全称 | 能力定位 | 典型岗位 |
@@ -115,12 +116,12 @@
 | 高级工程师级 | H3CSE | H3C Certified Senior Engineer | 大中型网络设计与复杂部署；会选型、会优化、会排障 | 系统集成工程师、项目实施工程师、原厂售后 |
 | 技术专家级 | H3CIE | H3C Certified Internetwork Expert | 大型网络规划设计与疑难问题解决；会做决策、会讲方案 | 架构师、技术负责人、高级顾问 |
 
-### 能力跃迁的本质：三个转变
+#### 能力跃迁的本质：三个转变
 1. **NE：功能实现** —— 知道 `vlan 100`、`port access vlan 100`、`ip route-static` 能把网络调通。
 2. **SE：方案选型** —— 知道什么时候用 MSTP+VRRP，什么时候用 IRF，什么时候上 M-LAG/DRNI，以及各自的**失效边界**。
 3. **IE：规划与排障闭环** —— 能在限定时间内从一个"被注入故障"的网络中定位并修复问题，写出规范的排错报告；能在面试里把设计理由讲清楚。
 
-### 📌 案例手记：同一张拓扑，三种答案
+#### 📌 案例手记：同一张拓扑，三种答案
 某园区网新建项目，核心层两台 S5560，接入层 8 台 S5130，要求"核心冗余、链路不浪费"。
 
 + **NE 的做法**：两台核心各配网关地址，接入交换机双上行但被 STP 阻塞一半链路，跑通了，但上行带宽只用了一半，主核心挂了要几十秒才切。
@@ -131,8 +132,8 @@
 
 ---
 
-## 0_2 考试科目与进阶规则全表
-### 路由交换方向（RS，最经典的主赛道）
+### 0_2 考试科目与进阶规则全表
+#### 路由交换方向（RS，最经典的主赛道）
 | 层级 | 考试代码 | 课程 / 科目 | 时长 | 题型与通过线 | 参考费用 |
 | --- | --- | --- | --- | --- | --- |
 | H3CNE-RS+ | GB0-192 | 路由交换技术基础 | 60 分钟 | 50 题，1000 分满分，600 分通过 | 约 ¥1200 |
@@ -147,13 +148,13 @@
 
 > 费用与政策会随官方调整而变化，**报考前请以新华三官方最新公告为准**。
 
-### 关键规则（决定你的报考节奏）
+#### 关键规则（决定你的报考节奏）
 + **H3CSE-RS+** 需先持有有效的 H3CNE-RS+（或同等级）证书；2 门必选 + 1 门可选，**成绩有效期 12 个月**，一年之内必须三门全过。
 + **H3CIE-RS+** 无需强制进阶（不要求先拿 NE/SE），但首次报考需参加新华三人才研学中心认可的 H3CIE-RS+ 培训；笔试成绩有效期 12 个月，需在此期限内通过实验与面试。
 + **H3CIE 证书有效期 2 年 + 1 年缓冲期**；在缓冲期内通过技术面试可刷新，否则需笔试、实验、面试三科重考。
 + 旧版 H3CNE（GB0-190，对应 Comware V5）与旧版 H3CSE-RS（GB0-370/380/390）已下线，证书下线后有效期不再刷新，设备版本也已切到 Comware V7，**学习以 V7 命令为准**。
 
-### 其他主流方向（按需切入）
+#### 其他主流方向（按需切入）
 | 方向 | 工程师级 | 高级工程师级 | 专家级 |
 | --- | --- | --- | --- |
 | 安全 Security | H3CNE-Security（GB0-510） | H3CSE-Security（GB0-530 构建安全网络架构 + GB0-551 部署内容安全系统） | H3CIE-Security（GB0-560 笔试 / HL0-500 实验 / HI0-500 面试） |
@@ -169,8 +170,8 @@
 
 ---
 
-## 0_3 零基础到 H3CNE-RS+ 的入门路线（约 8 周）
-### 阶段一：建立"数据怎么走"的直觉（约 2 周）
+### 0_3 零基础到 H3CNE-RS+ 的入门路线（约 8 周）
+#### 阶段一：建立"数据怎么走"的直觉（约 2 周）
 1. 用 HCL 搭两台交换机 + 两台 PC 的最小拓扑，抓包看 ARP 请求、ICMP 全过程。
 2. 必须自己讲清楚四个问题：
     - 同网段 PC1 怎么找到 PC2？（二层转发 + MAC 表）
@@ -179,7 +180,7 @@
     - Trunk 与 Access 的差别在哪一跳生效？
 3. 推荐教材：《路由交换技术基础》+ H3C 网络学院系列《路由交换技术详解与实践》第 1 卷。
 
-### 阶段二：命令行肌肉记忆（约 2 周，对应板块1~4）
+#### 阶段二：命令行肌肉记忆（约 2 周，对应板块1~4）
 | 时间 | 内容 | 板块 |
 | --- | --- | --- |
 | Day 1-2 | Comware 视图与帮助体系、配置保存与回滚 | 板块1 |
@@ -189,7 +190,7 @@
 | Day 11-12 | 静态路由、默认路由、单臂路由小综合 | 板块7 |
 | Day 13-14 | DHCP、NAT 出口、ACL 基础 | 板块8、9 |
 
-### 阶段三：综合小项目（约 2 周）
+#### 阶段三：综合小项目（约 2 周）
 按板块15 的"中小企业单核心组网"独立完成：
 
 ```plain
@@ -198,16 +199,16 @@ VLAN 划分 → 三层互通 → DHCP 下发 → 出口 NAT → 远程管理 SSH
 
 做完后**推倒重做一遍**，要求不看文档 40 分钟内配完。
 
-### 阶段四：冲刺（约 1 周）
+#### 阶段四：冲刺（约 1 周）
 刷官方大纲逐条自查，重点补：**STP 端口状态机、802.1Q 帧格式、OSPF 邻居状态机、ACL 通配符掩码计算**。  
 GB0-192 是 50 题 600 分，容错率约 40%，但题型含填空，**命令细节必须准**。
 
 ---
 
-## 0_4 H3CNE → H3CSE-RS+ 进阶顺序
+### 0_4 H3CNE → H3CSE-RS+ 进阶顺序
 GB0-372（交换）与 GB0-382（路由）**建议串行学习**，不要并行——两者思维方式不同。
 
-### 第一步 GB0-372：把园区网做"快"做"稳"
+#### 第一步 GB0-372：把园区网做"快"做"稳"
 | 大纲模块 | 对应板块 |
 | --- | --- |
 | 园区网模型与层次化设计 | 板块15 |
@@ -218,7 +219,7 @@ GB0-372（交换）与 GB0-382（路由）**建议串行学习**，不要并行�
 | 园区网安全与准入 | 板块10、12 |
 | 网络管理与维护 | 板块13 |
 
-### 第二步 GB0-382：把路由做"通"做"优"
+#### 第二步 GB0-382：把路由做"通"做"优"
 | 大纲模块 | 对应板块 |
 | --- | --- |
 | 路由基础与静态路由 | 板块7（7_1、7_2） |
@@ -228,14 +229,14 @@ GB0-372（交换）与 GB0-382（路由）**建议串行学习**，不要并行�
 | 路由策略与引入控制 | 板块7（7_7） |
 | IPv6 与 SRv6 | 板块7（7_8） |
 
-### 第三步 GB0-392：广域与安全优化
+#### 第三步 GB0-392：广域与安全优化
 板块9（9_4、9_5）+ 板块8 的 QoS 部分。
 
 > **学习节奏建议**：每周固定 3 个晚上 + 1 个半天实验。每个技术点走"看原理 → 敲配置 → 做验证 → 故意改坏再修"四步，第三遍才算学会。
 
 ---
 
-## 0_5 H3CSE → H3CIE-RS+ 冲刺路线
+### 0_5 H3CSE → H3CIE-RS+ 冲刺路线
 IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可输出的决策链**。
 
 ```plain
@@ -256,8 +257,8 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 
 ---
 
-## 0_6 实验环境搭建：HCL + 真机组合
-### HCL（H3C Cloud Lab）能做什么
+### 0_6 实验环境搭建：HCL + 真机组合
+#### HCL（H3C Cloud Lab）能做什么
 | 特性 | HCL 支持度 | 说明 |
 | --- | --- | --- |
 | 二层交换、VLAN、STP | 完全支持 | 日常练习主力 |
@@ -267,7 +268,7 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 | BFD MAD、光模块诊断 | 建议真机 | 模拟器无法体现硬件行为 |
 | 无线 AC+AP | 有限 | 建议真机或官方镜像 |
 
-### 真机最小配置建议
+#### 真机最小配置建议
 ```plain
 核心：S5560 或 S6520 系列 × 2（做 IRF / VRRP / M-LAG 实验）
 接入：S5130 或 S5120 系列 × 2
@@ -276,7 +277,7 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 无线：AC + WA 系列 AP × 1
 ```
 
-### HCL 使用避坑清单
+#### HCL 使用避坑清单
 1. **先画拓扑再开机**：HCL 设备启动慢，批量启动容易卡死，建议逐台启动。
 2. **内存分配**：每台设备按需分配，总内存不要超过物理机的 70%。
 3. **保存拓扑快照**：做完一个里程碑就导出一份，避免配置丢失后从头再来。
@@ -285,8 +286,8 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 
 ---
 
-## 0_7 笔记沉淀方法：让每次实验都可复用
-### 为什么大多数人笔记白记了
+### 0_7 笔记沉淀方法：让每次实验都可复用
+#### 为什么大多数人笔记白记了
 常见的三种无效笔记：
 
 | 类型 | 表现 | 问题 |
@@ -295,7 +296,7 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 | 流水账型 | "今天配了 OSPF，邻居起来了" | 没有记录失败过程，失败经验无法复用 |
 | 无验证型 | 只记配置不记 display 输出 | 考试和现场都不敢确认是否真的生效 |
 
-### 推荐：四段式实验笔记模板
+#### 推荐：四段式实验笔记模板
 ```plain
 ## 实验名称：OSPF 多区域 + 路由引入
 日期：____   环境：HCL / 真机型号____   版本：Comware ____
@@ -320,7 +321,7 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 - 两端 Stub 配置不一致会导致邻居起不来（区域类型必须一致）
 ```
 
-### 排障笔记：五段式现场记录法
+#### 排障笔记：五段式现场记录法
 ```plain
 1. 现象：谁、什么时候、访问什么、什么方式、报错原文
 2. 范围：单台 / 单 VLAN / 单楼 / 全网
@@ -333,7 +334,7 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 
 ---
 
-## 0_8 常见误区与避坑清单
+### 0_8 常见误区与避坑清单
 | 误区 | 后果 | 正确做法 |
 | --- | --- | --- |
 | 只看视频不动手 | 眼睛会了手不会 | 每个知识点至少敲三遍 |
@@ -346,7 +347,7 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 
 ---
 
-## 0_9 本板块验收清单
+### 0_9 本板块验收清单
 | 验收项 | 命令 / 方法 | 达标标准 |
 | --- | --- | --- |
 | 明确自己的目标等级与科目 | 对照 0_2 表格 | 能说出自己下一个要考的代码与有效期规则 |
@@ -354,7 +355,7 @@ IE 阶段的核心不是"多学新技术"，而是**把已有知识组织成可�
 | 掌握笔记方法 | 用 0_7 模板写一份笔记 | 笔记含"现象→假设→验证→结论"四段 |
 | 理解三级能力差异 | 复述 0_1 的三个转变 | 能举例说明 NE/SE/IE 的不同处理方式 |
 
-### 起步动作（今天就能做）
+#### 起步动作（今天就能做）
 ```bash
 # 1. 打开 HCL 或登录一台设备，确认版本
 <H3C> display version
@@ -366,16 +367,16 @@ mkdir -p H3C-Lab/{00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15}
 #    主题 = "两台交换机 + 两台 PC 的二层转发全过程"
 ```
 
-# 板块1 · Comware 系统基础、设备命令行与生命周期管理
+## 板块1 · Comware 系统基础、设备命令行与生命周期管理
 > 本板块是所有后续配置的"地基"：视图层级、配置文件的保存与回滚、文件系统与固件升级、密码丢失后的恢复。  
 学完标准：**拿到一台陌生设备，5 分钟内完成"识别版本 → 看清现状 → 备份配置 → 可安全修改"的标准动作。**
 
 ---
 
-## 1_1 Comware 版本识别：V5 与 V7 的差异清单
+### 1_1 Comware 版本识别：V5 与 V7 的差异清单
 H3C 设备从 Comware V5 演进到 V7，命令体系发生了结构性变化。考试与实战均以 V7 为准，但现网仍有大量 V5 设备（如 S3600/S5500 老版本、SecPath F1000-S 的 Version 5.20）。
 
-### 第一步：上机先看版本
+#### 第一步：上机先看版本
 ```plain
 <H3C> display version
 ```
@@ -386,7 +387,7 @@ H3C 设备从 Comware V5 演进到 V7，命令体系发生了结构性变化。�
 + **H3C S5560-30C-EI**：设备型号，决定支持哪些特性。
 + **Uptime**：运行时长，判断设备是否近期重启过（排障第一线索）。
 
-### 新旧命令对照（高频）
+#### 新旧命令对照（高频）
 | 功能 | Comware V5（旧） | Comware V7（新，考试标准） |
 | --- | --- | --- |
 | 创建本地用户 | `local-user admin` | `local-user admin class manage` |
@@ -398,14 +399,14 @@ H3C 设备从 Comware V5 演进到 V7，命令体系发生了结构性变化。�
 | 查看端口简要信息 | `display brief interface` | `display interface brief` |
 | 关闭信息中心 | `undo info-center enable` | `undo info-center enable`（同） |
 
-### V7 的三类用户角色
+#### V7 的三类用户角色
 + **network-admin**：管理员，等价 level-15，可执行所有配置。
 + **network-operator**：操作员，只读，能看不能改。
 + **level-0 ~ level-15**：传统级别，兼容旧体系。
 
 等保场景推荐用 `user-role` 而非 `level`，见板块10。
 
-### 📌 案例手记：一次割接前的"Unrecognized command"
+#### 📌 案例手记：一次割接前的"Unrecognized command"
 某次接入层割接，工程师提前在家用 HCL（V7）写好 40 行配置脚本，现场粘到一台 S5500 上，第一行就报 `Unrecognized command`。
 
 排查：`display version` 一看，Comware V5.20。脚本里的 `local-user admin class manage` 在 V5 上不存在，`user-interface vty 0 63` 也不支持。
@@ -416,8 +417,8 @@ H3C 设备从 Comware V5 演进到 V7，命令体系发生了结构性变化。�
 
 ---
 
-## 1_2 视图层级与命令行帮助体系
-### 视图结构
+### 1_2 视图层级与命令行帮助体系
+#### 视图结构
 Comware 采用分层视图结构，提示符直接反映当前所处层级：
 
 | 提示符 | 视图 | 进入方式 | 能干什么 |
@@ -432,7 +433,7 @@ Comware 采用分层视图结构，提示符直接反映当前所处层级：
 
 导航命令：`quit` 退一级、`return`（或 Ctrl+Z）直接回用户视图。
 
-### 帮助体系（考试高频）
+#### 帮助体系（考试高频）
 ```plain
 [H3C] ?                                          # 列出当前视图所有命令
 [H3C] dis?                                       # 列出以 dis 开头的命令
@@ -446,7 +447,7 @@ Comware 采用分层视图结构，提示符直接反映当前所处层级：
 
 管道过滤符 `| include` / `| exclude` / `| begin` 是 **H3CIE 实验提速的关键**——6 小时考试里，靠 `include` 定位配置比翻页快一个数量级。
 
-### 命令简写规则
+#### 命令简写规则
 Comware 支持唯一性前缀简写：
 
 ```plain
@@ -458,7 +459,7 @@ int g1/0/1   =   interface gigabitethernet 1/0/1
 
 ---
 
-## 1_3 设备基本信息查看与命名
+### 1_3 设备基本信息查看与命名
 ```plain
 <H3C> system-view
 [H3C] sysname Core-SW-01                    # 命名，等保要求设备可唯一识别
@@ -478,7 +479,7 @@ int g1/0/1   =   interface gigabitethernet 1/0/1
 
 **序列号与过保查询**：`display device manuinfo`（部分型号为 `display device manuinfo slot 1`）可拿到设备序列号与生产日期，再到官方服务网站查询维保与过保状态。做扩容、续保、故障换件时第一步就是这个。
 
-### 开局检查清单（建议固化为习惯）
+#### 开局检查清单（建议固化为习惯）
 ```plain
 1. display version            —— 版本、型号、Uptime
 2. display device manuinfo    —— 序列号、生产日期（记录进台账）
@@ -493,7 +494,7 @@ int g1/0/1   =   interface gigabitethernet 1/0/1
 
 ---
 
-## 1_4 配置文件管理：保存、回滚与恢复出厂
+### 1_4 配置文件管理：保存、回滚与恢复出厂
 Comware 有两个配置：
 
 + **运行配置**（current-configuration）：内存中的，断电丢失。
@@ -501,7 +502,7 @@ Comware 有两个配置：
 
 所有"改完没保存，重启后配置丢了"的事故都源于混淆这两者。
 
-### 核心命令
+#### 核心命令
 ```plain
 <H3C> display current-configuration        # 查看运行配置（简写 dis cu）
 <H3C> display saved-configuration          # 查看保存配置
@@ -515,7 +516,7 @@ Comware 有两个配置：
 <H3C> reboot                               # 重启
 ```
 
-### 配置回滚（V7）
+#### 配置回滚（V7）
 ```plain
 [H3C] archive configuration                # 手动归档当前配置
 [H3C] configuration replace file flash:/xxx.cfg   # 用归档文件替换当前配置
@@ -530,7 +531,7 @@ Comware 有两个配置：
 <H3C> display diff current-configuration flash:/pre-change.cfg  # 看差异
 ```
 
-### 📌 案例手记：一条 `save` 救回来的两小时
+#### 📌 案例手记：一条 `save` 救回来的两小时
 某次接入交换机改 VLAN，工程师改完业务正常，但没 `save`。两天后该交换机因电源故障重启，配置回到旧版本，半个楼层的终端拿不到地址。
 
 现场恢复耗时两小时，而正确做法只需要在改完后多敲一条 `save force`。
@@ -539,8 +540,8 @@ Comware 有两个配置：
 
 ---
 
-## 1_5 文件系统与配置文件导入导出
-### 常用文件操作
+### 1_5 文件系统与配置文件导入导出
+#### 常用文件操作
 ```plain
 <H3C> dir /all                             # 查看 Flash 中所有文件（含回收站）
 <H3C> more startup.cfg                     # 查看文本文件内容
@@ -553,7 +554,7 @@ Comware 有两个配置：
 <H3C> format flash:                        # 格式化（极度危险，慎用）
 ```
 
-### 配置文件的备份与恢复（FTP / TFTP）
+#### 配置文件的备份与恢复（FTP / TFTP）
 ```plain
 # 备份配置到 TFTP 服务器
 <H3C> tftp 192.168.1.100 put startup.cfg Core-SW-01-20260914.cfg
@@ -572,8 +573,8 @@ Comware 有两个配置：
 
 ---
 
-## 1_6 固件升级标准流程与风险控制
-### 升级前检查（不可省略）
+### 1_6 固件升级标准流程与风险控制
+#### 升级前检查（不可省略）
 ```plain
 <H3C> display version          # 确认当前版本
 <H3C> dir /all                 # 查看 Flash 空间是否足够
@@ -581,7 +582,7 @@ Comware 有两个配置：
 <H3C> tftp 192.168.1.100 put startup.cfg pre-upgrade.cfg    # 配置备份到服务器
 ```
 
-### 标准升级流程
+#### 标准升级流程
 ```plain
 # 1. 删除旧系统文件（空间不足时）
 <H3C> delete /unreserved s3600v2_e-cmw520-r2111p02.bin
@@ -608,7 +609,7 @@ Comware 有两个配置：
 <H3C> dir /all
 ```
 
-### 升级风险控制表
+#### 升级风险控制表
 | 风险 | 控制措施 |
 | --- | --- |
 | 配置丢失 | 升级前 `save` + TFTP 导出配置 |
@@ -619,7 +620,7 @@ Comware 有两个配置：
 
 > 涉及维保设备的升级，建议通过官方技术支持或代理商获取版本与补丁，避免用到不匹配的公版软件。
 
-### 📌 案例手记：升级后配置"消失"的真相
+#### 📌 案例手记：升级后配置"消失"的真相
 一台 S5120 升级完成后，工程师发现所有 VLAN 配置都没了。
 
 排查：`display startup` 显示下次启动配置文件为 NULL——升级时只改了启动文件，**配置文件的路径没有同步指定**。
@@ -637,10 +638,10 @@ Comware 有两个配置：
 
 ---
 
-## 1_7 密码恢复与配置抢救
+### 1_7 密码恢复与配置抢救
 密码丢失是最常见的"进不去设备"场景，处理分两种思路。
 
-### 思路一：有 Console 权限，跳过认证改密码
+#### 思路一：有 Console 权限，跳过认证改密码
 1. 通过 Console 口连接设备，重启设备。
 2. 启动过程中按 **Ctrl+B** 进入 BootRom 菜单（不同型号按键可能不同，注意启动提示）。
 3. 选择 **跳过当前配置启动**（Skip Current System Configuration）。
@@ -659,10 +660,10 @@ Comware 有两个配置：
 [H3C] save force
 ```
 
-### 思路二：直接删除 / 重置用户密码（保留配置）
+#### 思路二：直接删除 / 重置用户密码（保留配置）
 部分设备支持在 BootRom 菜单中**清除认证密码但保留配置文件**，这是最理想的方式——业务配置不丢，只重置登录凭据。
 
-### 恢复后的必做验证
+#### 恢复后的必做验证
 ```plain
 <H3C> display current-configuration | include local-user     # 确认用户存在
 <H3C> display local-user                                     # 确认服务类型与角色
@@ -674,8 +675,8 @@ Comware 有两个配置：
 
 ---
 
-## 1_8 实验笔记模板与验收清单
-### 本板块实验笔记模板
+### 1_8 实验笔记模板与验收清单
+#### 本板块实验笔记模板
 ```plain
 ## 实验：设备开局与配置生命周期管理
 日期：____   设备型号：____   Comware 版本：____
@@ -700,7 +701,7 @@ Comware 有两个配置：
 - reset saved-configuration 后务必确认重启影响范围
 ```
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | 版本识别正确 | `display version` | 能说出 V5/V7 与型号、Uptime |
@@ -710,13 +711,13 @@ Comware 有两个配置：
 | 开局清单熟练 | 1_3 的 9 步 | 5 分钟内跑完并记录 |
 | 升级风险可控 | 1_6 风险表 | 能说出四类风险与对应措施 |
 
-# 板块2 · 设备登录与远程管理（Console / Telnet / SSH / Web）
+## 板块2 · 设备登录与远程管理（Console / Telnet / SSH / Web）
 > 学习目标：NE 要求会配通；SE 要求会加固（板块10 延伸）；IE 要求能在"登不上设备"的场景下 3 分钟内定位。  
 核心认知：**Console 与 VTY 是两条独立的线路，配置互不干扰。**
 
 ---
 
-## 2_1 登录方式总览与选型
+### 2_1 登录方式总览与选型
 | 登录方式 | 协议 | 安全性 | 适用场景 | 认证方式 |
 | --- | --- | --- | --- | --- |
 | Console（AUX 线路） | 串口 | 物理接触，最安全 | 开局、密码恢复、设备救砖 | none / password / scheme |
@@ -726,7 +727,7 @@ Comware 有两个配置：
 
 **H3CNE 考点**：Console 与 Telnet 是两条独立的线路，配置互不干扰。改 Console 认证不会影响 Telnet，反之亦然。这是新手最容易混淆的点——**配完 Telnet 登不上，问题往往出在 VTY 线路没配认证或没开服务**。
 
-### 线路与编号规则
+#### 线路与编号规则
 ```plain
 Console  ：user-interface console 0（部分设备为 aux 0）
 VTY      ：user-interface vty 0 4（V5）/ vty 0 63（V7）
@@ -734,7 +735,7 @@ VTY      ：user-interface vty 0 4（V5）/ vty 0 63（V7）
 
 V7 的 VTY 数量扩展到 64 条，但**同时在线用户数仍受 License 与设备性能限制**。
 
-### ASCII 拓扑：远程管理路径
+#### ASCII 拓扑：远程管理路径
 ```plain
   [运维PC]
      |
@@ -749,8 +750,8 @@ V7 的 VTY 数量扩展到 64 条，但**同时在线用户数仍受 License 与
 
 ---
 
-## 2_2 Console 口登录的三种认证方式
-### 方式一：无需认证（none）
+### 2_2 Console 口登录的三种认证方式
+#### 方式一：无需认证（none）
 ```plain
 <H3C> system-view
 [H3C] user-interface console 0
@@ -769,7 +770,7 @@ V7 的 VTY 数量扩展到 64 条，但**同时在线用户数仍受 License 与
 <H3C>
 ```
 
-### 方式二：密码认证（password）
+#### 方式二：密码认证（password）
 ```plain
 [H3C] user-interface console 0
 [H3C-ui-console0] authentication-mode password
@@ -783,7 +784,7 @@ Password:
 <H3C>
 ```
 
-### 方式三：AAA 认证（scheme，用户名 + 密码）—— 生产推荐
+#### 方式三：AAA 认证（scheme，用户名 + 密码）—— 生产推荐
 ```plain
 [H3C] user-interface console 0
 [H3C-ui-console0] authentication-mode scheme
@@ -806,15 +807,15 @@ Password:
 <H3C>
 ```
 
-### 三个必错点
+#### 三个必错点
 1. **忘配 **`service-type terminal`：scheme 认证下用户必须声明服务类型，否则即使密码正确也登不上。Telnet 用户要 `service-type telnet`，SSH 用户要 `service-type ssh`——这是"密码没错但就是登不上"的头号原因。
 2. `authorization-attribute`** 漏配**：登上去只有查看权限，进不了系统视图，表现为 `Permission denied`。
 3. **Console 属性改完立即生效**：通过 Console 口改 Console 口属性，可能中途断连。建议用 Telnet/SSH 改 Console 属性，改完用 Console 验证时保持终端参数一致（**9600 / 8 / 1 / None / None**）。
 
 ---
 
-## 2_3 Telnet 配置（含完整排障）
-### 最小可用配置（密码方式）
+### 2_3 Telnet 配置（含完整排障）
+#### 最小可用配置（密码方式）
 ```plain
 <H3C> system-view
 [H3C] telnet server enable                       # 开服务（V5 部分设备默认关闭）
@@ -832,7 +833,7 @@ Password:
 [H3C] save force
 ```
 
-### 用户名 + 密码方式（scheme）
+#### 用户名 + 密码方式（scheme）
 ```plain
 [H3C] telnet server enable
 [H3C] user-interface vty 0 4
@@ -847,7 +848,7 @@ Password:
 [H3C] save force
 ```
 
-### Telnet 连不上的七步定位法
+#### Telnet 连不上的七步定位法
 | 步骤 | 检查内容 | 不通时的处理 |
 | --- | --- | --- |
 | 第1步 | 本机 ping 管理 IP 通不通？ | 不通 → 查 IP、VLAN、网关、物理链路 |
@@ -858,7 +859,7 @@ Password:
 | 第6步 | VTY 是否被占满？ | `display users`（线路占满后新的连不上） |
 | 第7步 | 是否有 ACL 拦截？ | 查看 VTY 下的 `acl inbound` |
 
-### 常用查看命令
+#### 常用查看命令
 ```plain
 [H3C] display users                       # 当前登录用户
 [H3C] display user-interface              # 所有线路状态
@@ -869,7 +870,7 @@ Password:
 
 > **生产建议**：Telnet 明文传输，等保 2.0 明确要求远程管理走加密协议。配置完 SSH 后应 `undo telnet server enable` 关闭 Telnet，见板块10。
 
-### 📌 案例手记：密码没错，为什么就是登不上？
+#### 📌 案例手记：密码没错，为什么就是登不上？
 新入职工程师给一台接入交换机配 Telnet：
 
 ```plain
@@ -888,8 +889,8 @@ Password:
 
 ---
 
-## 2_4 SSH 配置（生产环境标准）
-### 密码认证方式（基础 SSH）
+### 2_4 SSH 配置（生产环境标准）
+#### 密码认证方式（基础 SSH）
 ```plain
 # 1. 生成本地密钥对（SSH 的前置条件，没有密钥对 SSH 起不来）
 [H3C] public-key local create rsa
@@ -914,7 +915,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 [H3C] save force
 ```
 
-### 公钥认证方式（更高安全等级）
+#### 公钥认证方式（更高安全等级）
 ```plain
 # 1. 在客户端生成密钥对（以常见 SSH 工具为例），得到公钥文本
 # 2. 在设备上导入客户端公钥
@@ -933,7 +934,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 [H3C-ui-vty0-4] protocol inbound ssh
 ```
 
-### SSH 加固建议
+#### SSH 加固建议
 ```plain
 [H3C] ssh server acl 2000                 # 仅允许运维网段 SSH
 [H3C] ssh server authentication-retries 3 # 认证重试次数
@@ -941,7 +942,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 [H3C] ssh server compatible-ssh1x disable # 禁用不安全的 SSH1
 ```
 
-### SSH 验证清单
+#### SSH 验证清单
 ```plain
 <H3C> display ssh server status           # 服务是否开启、版本、端口
 <H3C> display ssh server session          # 当前 SSH 会话
@@ -951,7 +952,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 ---
 
-## 2_5 Web 网管与 HTTPS
+### 2_5 Web 网管与 HTTPS
 ```plain
 [H3C] ip https enable                     # 开启 HTTPS（推荐）
 [H3C] ip http enable                      # 开启 HTTP（不推荐，等保会扣分）
@@ -968,7 +969,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 ---
 
-## 2_6 用户级别与角色体系
+### 2_6 用户级别与角色体系
 | 用户角色 / 级别 | 权限 | 典型用途 |
 | --- | --- | --- |
 | network-admin（level-15） | 全部配置权限 | 系统管理员 |
@@ -976,7 +977,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 | network-operator（level-1） | 只读 | 审计管理员、监控账号 |
 | level-0 | 仅网络诊断命令（ping、tracert） | 一线值守 |
 
-### 命令行级别与用户级别的关系
+#### 命令行级别与用户级别的关系
 + **用户级别**决定能执行哪些级别的命令。
 + **命令级别**分 0~3 级（访问级、监控级、系统级、管理级）。
 + V7 推荐用 `user-role`（基于角色）而不是 `level`（基于数字），粒度更细 等保可解释性更好。
@@ -989,7 +990,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 ---
 
-## 2_7 登录类故障速查表
+### 2_7 登录类故障速查表
 | 现象 | 最可能原因 | 定位命令 |
 | --- | --- | --- |
 | 密码正确但认证失败 | 缺 `service-type` | `display local-user` |
@@ -1000,7 +1001,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 | Console 无响应 | 终端参数不对 | 确认 9600/8/1/None/None |
 | 远程能连但本地 ping 不通 | ICMP 被 ACL 拦或管理口未放开 | `display acl all` |
 
-### 踢掉僵死会话
+#### 踢掉僵死会话
 ```plain
 <H3C> display users
 <H3C> free user-interface vty 2
@@ -1008,8 +1009,8 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 ---
 
-## 2_8 实验笔记模板与验收清单
-### 笔记模板
+### 2_8 实验笔记模板与验收清单
+#### 笔记模板
 ```plain
 ## 实验：Console / Telnet / SSH 三类登录配置与排障
 日期：____   设备：____   版本：____
@@ -1036,7 +1037,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 - VTY 数量 V5 与 V7 不同
 ```
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | Console scheme 认证可用 | Console 登录 | 需用户名 + 密码，且能进系统视图 |
@@ -1047,14 +1048,14 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 | 超时符合等保 | `display current-configuration | begin user-interface` | idle-timeout ≤ 20 分钟 |
 | 排障熟练 | 七步定位法 | 能在 3 分钟内走完 |
 
-# 板块3 · 以太网交换原理、端口管理与状态排查
+## 板块3 · 以太网交换原理、端口管理与状态排查
 > 本板块是 H3CNE 的核心得分板块，也是所有后续配置（VLAN、STP、堆叠）的物理载体。  
 结构：原理 → 配置 → 排查，三段式推进。
 
 ---
 
-## 3_1 交换机转发原理：必须能口述的三件事
-### 3_1_1 MAC 地址学习
+### 3_1 交换机转发原理：必须能口述的三件事
+#### 3_1_1 MAC 地址学习
 交换机收到数据帧后，用**源 MAC + 入端口 + VLAN** 三元组更新 MAC 地址表，然后用**目的 MAC + VLAN** 查表决定动作：
 
 | 目的 MAC 类型 | 动作 |
@@ -1063,7 +1064,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 | 单播但表中无表项 | 泛洪到同 VLAN 内的其他所有端口 |
 | 广播 / 组播（未开启组播优化） | 泛洪到同 VLAN 内的其他所有端口 |
 
-### MAC 表查看与维护
+#### MAC 表查看与维护
 ```plain
 [H3C] display mac-address                        # 查看整表
 [H3C] display mac-address 00e0-fc23-f8d3         # 查某个 MAC
@@ -1076,7 +1077,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 **MAC 漂移排查**：同一 MAC 在两个端口间反复出现，通常意味着环路。这是"全网慢、丢包、CPU 飙升"最常见的根因之一。
 
-### 3_1_2 三种交换模式
+#### 3_1_2 三种交换模式
 | 模式 | 特点 | 现状 |
 | --- | --- | --- |
 | 直通转发（Cut-through） | 读到目的 MAC 就转发，延迟低 | **不校验错误帧**，会转发残帧 |
@@ -1085,12 +1086,12 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 > 考题常问"哪一种会转发残帧"——答案：**直通转发**。
 
-### 3_1_3 冲突域与广播域
+#### 3_1_3 冲突域与广播域
 + 交换机**每个端口隔离冲突域** → 端口越多，冲突域越多。
 + 交换机**所有端口默认在同一广播域（VLAN 1）** → 只有 VLAN 才能隔离广播域。
 + **路由器 / 三层接口隔离广播域**。
 
-### ASCII 示意：广播域与冲突域
+#### ASCII 示意：广播域与冲突域
 ```plain
    交换机（未划分 VLAN）
    +---------------------------+
@@ -1106,15 +1107,15 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 ---
 
-## 3_2 端口视图与基本参数配置
-### 3_2_1 进入端口的三种写法
+### 3_2 端口视图与基本参数配置
+#### 3_2_1 进入端口的三种写法
 ```plain
 [H3C] interface GigabitEthernet 1/0/1     # 全写
 [H3C] interface gigabitethernet 1/0/1     # 不区分大小写
 [H3C] int g1/0/1                          # 简写（实战常用）
 ```
 
-### 3_2_2 速率与双工
+#### 3_2_2 速率与双工
 ```plain
 [H3C-GigabitEthernet1/0/1] speed 1000                 # 10 / 100 / 1000 / auto
 [H3C-GigabitEthernet1/0/1] duplex full                # half / full / auto
@@ -1128,7 +1129,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 + **一端强制、一端自协商是经典故障**：自协商端会 fallback 到半双工，导致大量 CRC 错误与丢包，现象是"能 ping 通但很慢"。
 + **光口不支持配置速率 / 双工**；端口加入聚合组后不能在成员口上单独配置速率双工。
 
-### 3_2_3 端口描述、开关与其他参数
+#### 3_2_3 端口描述、开关与其他参数
 ```plain
 [H3C-GigabitEthernet1/0/1] description To-FileServer-01     # 描述，最长 80 字符
 [H3C-GigabitEthernet1/0/1] shutdown                          # 关闭
@@ -1145,7 +1146,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 **端口描述是分水岭**：新手从不写 `description`，老手开局必写。一个 48 口交换机，没有描述的端口在故障排查时等于盲盒。等保测评也会检查这项。
 
-### 📌 案例手记："能 ping 通但特别慢"的双工谜案
+#### 📌 案例手记："能 ping 通但特别慢"的双工谜案
 某单位文件服务器迁移后，员工反馈访问共享目录极慢，但 `ping` 只丢一两个包。
 
 排查过程：
@@ -1161,8 +1162,8 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 ---
 
-## 3_3 批量端口管理：interface range 与 port-group
-### 3_3_1 interface range（临时批量，V7 推荐）
+### 3_3 批量端口管理：interface range 与 port-group
+#### 3_3_1 interface range（临时批量，V7 推荐）
 ```plain
 [H3C] interface range GigabitEthernet 1/0/1 to GigabitEthernet 1/0/24
 [H3C-if-range] undo shutdown
@@ -1181,7 +1182,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 [H3C-if-range] undo shutdown
 ```
 
-### 3_3_2 port-group（持久端口组，适合长期维护）
+#### 3_3_2 port-group（持久端口组，适合长期维护）
 ```plain
 [H3C] port-group manual IDLE-PORTS
 [H3C-port-group-manual-idle-ports] group-member g1/0/25 to g1/0/48
@@ -1193,7 +1194,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 [H3C-if-range] port access vlan 999
 ```
 
-### 两者区别
+#### 两者区别
 | 对比项 | interface range | port-group |
 | --- | --- | --- |
 | 持久性 | 一次性，退出即失效 | 持久对象，保存在配置文件中 |
@@ -1201,8 +1202,8 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 
 ---
 
-## 3_4 端口状态查看与过滤技巧
-### 3_4_1 核心命令
+### 3_4 端口状态查看与过滤技巧
+#### 3_4_1 核心命令
 ```plain
 <H3C> display interface brief
 <H3C> display interface brief | include DOWN      # 只看 DOWN 的口
@@ -1211,7 +1212,7 @@ Input the modulus length [default = 1024]: 2048      # 建议 2048，1024 已不
 <H3C> display interface g1/0/1 | include rate     # 看速率与双工
 ```
 
-### 输出解读（二层部分）
+#### 输出解读（二层部分）
 ```plain
 GE1/0/1    UP     1G(a)   F(a)   A    1
 GE1/0/2    DOWN   --      --     A    1
@@ -1226,14 +1227,14 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 | Type | A 表示 Access，T 表示 Trunk，H 表示 Hybrid |
 | PVID | 端口默认 VLAN ID |
 
-### Link 状态三态速查
+#### Link 状态三态速查
 | 状态 | 含义 | 处理 |
 | --- | --- | --- |
 | UP | 接口正常连通 | — |
 | DOWN | 接口未接线或网线未插好 | 检查物理链路、对端端口 |
 | ADM | 手动关闭（Administratively Down） | `undo shutdown` 开启 |
 
-### 3_4_2 端口流量与错误统计
+#### 3_4_2 端口流量与错误统计
 ```plain
 <H3C> display interface g1/0/1
 # 重点关注：
@@ -1248,7 +1249,7 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 
 ---
 
-## 3_5 端口 DOWN 排查九宫格
+### 3_5 端口 DOWN 排查九宫格
 | 现象 | 检查 | 处理 |
 | --- | --- | --- |
 | 端口 ADM | `display interface brief` | `undo shutdown` |
@@ -1261,7 +1262,7 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 | 新设备端口全 DOWN | 查是否 `shutdown` 默认 | 批量 `undo shutdown` |
 | 端口 UP 但无流量 | 查 VLAN、STP 状态 | 是否被 STP 阻塞 |
 
-### 光模块诊断（真机）
+#### 光模块诊断（真机）
 ```plain
 <H3C> display transceiver interface Ten-GigabitEthernet 1/0/49
 <H3C> display transceiver diagnosis interface Ten-GigabitEthernet 1/0/49
@@ -1271,8 +1272,8 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 
 ---
 
-## 3_6 端口镜像与抓包
-### 本地端口镜像
+### 3_6 端口镜像与抓包
+#### 本地端口镜像
 ```plain
 [H3C] mirroring-group 1 local
 [H3C] mirroring-group 1 mirroring-port g1/0/1 both      # 被镜像口（both = 双向）
@@ -1285,7 +1286,7 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 <H3C> display mirroring-group 1
 ```
 
-### 远程端口镜像（跨设备，RSPAN 思路）
+#### 远程端口镜像（跨设备，RSPAN 思路）
 ```plain
 # 源设备
 [H3C] mirroring-group 1 remote-source
@@ -1299,7 +1300,7 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 [H3C] mirroring-group 1 remote-probe vlan 999
 ```
 
-### 设备自带抓包（V7 支持）
+#### 设备自带抓包（V7 支持）
 ```plain
 <H3C> packet-capture interface g1/0/1 inbound
 # 按提示抓包并保存，可导出后分析
@@ -1307,7 +1308,7 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 
 > **实战价值**：抓包是"证明流量到底有没有到设备"的终极手段。当 `display` 命令看不出问题时，抓包能一锤定音——DHCP 请求有没有上来、ARP 有没有响应、OSPF Hello 有没有发。
 
-### 📌 案例手记：用镜像抓包定位"DHCP 拿不到地址"
+#### 📌 案例手记：用镜像抓包定位"DHCP 拿不到地址"
 故障：某楼层新装终端全部拿不到地址，其他楼层正常。
 
 排查：
@@ -1321,7 +1322,7 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 
 ---
 
-## 3_7 端口安全（接入层防护基础）
+### 3_7 端口安全（接入层防护基础）
 ```plain
 [H3C-GigabitEthernet1/0/1] port-security enable
 [H3C-GigabitEthernet1/0/1] port-security max-mac-count 1          # 只允许 1 个 MAC
@@ -1340,8 +1341,8 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 
 ---
 
-## 3_8 实验笔记模板与验收清单
-### 笔记模板
+### 3_8 实验笔记模板与验收清单
+#### 笔记模板
 ```plain
 ## 实验：端口管理与 DOWN 排查
 日期：____   设备：____
@@ -1367,7 +1368,7 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 - 光口不支持速率/双工配置
 ```
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | 端口总览清晰 | `display interface brief` | 能区分 UP / DOWN / ADM 与 PVID |
@@ -1378,15 +1379,15 @@ GE1/0/3    ADM    --      --     A    1    Disabled_Unused
 | 光模块健康 | `display transceiver diagnosis` | 收发光功率在正常范围 |
 | 端口安全生效 | `display port-security interface` | 超限后按预期动作处理 |
 
-# 板块4 · VLAN 与三层互通（从创建 VLAN 到跨网段通信）
+## 板块4 · VLAN 与三层互通（从创建 VLAN 到跨网段通信）
 > 本板块是整份知识库的重心。  
 NE 要求"配得通"，SE 要求"选得对（Super VLAN / QinQ / MVRP）"，IE 要求"排得快"。  
 VLAN 划分是项目应用中最频繁的操作，所有命令均可直接在 HCL 或真机上复现。
 
 ---
 
-## 4_1 VLAN 原理与 802.1Q 帧格式
-### 4_1_1 为什么需要 VLAN
+### 4_1 VLAN 原理与 802.1Q 帧格式
+#### 4_1_1 为什么需要 VLAN
 一台二层交换机所有端口默认属于同一个广播域。广播域过大会带来三个问题：
 
 1. **广播风暴风险**：ARP、DHCP 等广播报文被泛洪到所有端口，浪费带宽与终端 CPU。
@@ -1395,7 +1396,7 @@ VLAN 划分是项目应用中最频繁的操作，所有命令均可直接在 HC
 
 VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交换机逻辑切成多台交换机**。
 
-### 4_1_2 802.1Q 标签格式（考试必考）
+#### 4_1_2 802.1Q 标签格式（考试必考）
 标准以太网帧在源 MAC 与类型字段之间插入 4 字节 Tag：
 
 ```plain
@@ -1423,7 +1424,7 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 + **VLAN 1 是默认 VLAN，不可删除**，且默认所有端口都在 VLAN 1 中——这是现网最大的安全隐患之一，等保测评会要求把业务口移出 VLAN 1。
 + 带 Tag 的帧长度上限从 1518 字节变为 **1522 字节**。
 
-### 4_1_3 VLAN 的三种划分方式
+#### 4_1_3 VLAN 的三种划分方式
 | 方式 | 依据 | 适用场景 | H3C 支持 |
 | --- | --- | --- | --- |
 | 基于端口（最常用） | 物理端口 | 固定终端接入 | 所有型号 |
@@ -1435,8 +1436,8 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 
 ---
 
-## 4_2 一步步创建 VLAN（NE 核心操作）
-### 4_2_1 最小三步法
+### 4_2 一步步创建 VLAN（NE 核心操作）
+#### 4_2_1 最小三步法
 ```plain
 <H3C> system-view                             # 第1步 进系统视图
 [H3C] vlan 10                                 # 第2步 创建 VLAN 10（若不存在则自动创建）
@@ -1447,7 +1448,7 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 
 就这么简单。但实际项目要做得更规范，见 4_2_3。
 
-### 4_2_2 等价写法：在端口视图下加入
+#### 4_2_2 等价写法：在端口视图下加入
 ```plain
 [H3C] interface GigabitEthernet 1/0/1
 [H3C-GigabitEthernet1/0/1] port link-type access      # 先设链路类型为 access
@@ -1459,7 +1460,7 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 + 在 **VLAN 视图**下用 `port` 命令**只能加 access 端口**，不能加 trunk/hybrid 端口。
 + 在 **端口视图**下 `port access vlan` 会**自动把端口链路类型设为 access**。
 
-### 4_2_3 生产环境推荐写法（带描述与批量）
+#### 4_2_3 生产环境推荐写法（带描述与批量）
 ```plain
 <H3C> system-view
 [H3C] sysname ACC-SW-A
@@ -1495,13 +1496,13 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 [H3C] save force
 ```
 
-### 4_2_4 批量创建多个 VLAN
+#### 4_2_4 批量创建多个 VLAN
 ```plain
 [H3C] vlan 10 to 20                      # 连续创建 VLAN 10~20
 [H3C] vlan batch 10 20 30 40             # 部分版本支持 batch 关键字
 ```
 
-### 4_2_5 删除 VLAN
+#### 4_2_5 删除 VLAN
 ```plain
 [H3C] undo vlan 10        # 删除指定 VLAN
 [H3C] undo vlan all       # 删除除缺省 VLAN 外的所有 VLAN（VLAN 1 不可删）
@@ -1511,8 +1512,8 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 
 ---
 
-## 4_3 Access / Trunk / Hybrid 与 PVID
-### 4_3_1 三种链路类型对帧的处理方式
+### 4_3 Access / Trunk / Hybrid 与 PVID
+#### 4_3_1 三种链路类型对帧的处理方式
 | 链路类型 | 接收帧的处理 | 发送帧的处理 | 典型用途 |
 | --- | --- | --- | --- |
 | Access | 收到无 Tag 帧 → 打上端口 PVID；收到带 Tag 帧 → 若 VID = PVID 则接收，否则丢弃 | **剥离 Tag 后发送**（始终不带 Tag） | 接 PC、打印机、服务器单 VLAN |
@@ -1521,14 +1522,14 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 
 **Trunk 的 PVID 行为要特别注意**：Trunk 口发送 PVID 所属 VLAN 的帧时会**剥离 Tag**。如果两端 Trunk 的 PVID 不一致，会造成 VLAN 泄漏或通信异常——**trunk 线路两端的 PVID 必须一致**。
 
-### 4_3_2 Access 配置
+#### 4_3_2 Access 配置
 ```plain
 [H3C] interface GigabitEthernet 1/0/1
 [H3C-GigabitEthernet1/0/1] port link-type access
 [H3C-GigabitEthernet1/0/1] port access vlan 20        # 等价 V7：port default vlan 20
 ```
 
-### 4_3_3 Trunk 配置
+#### 4_3_3 Trunk 配置
 ```plain
 [H3C] interface GigabitEthernet 1/0/24
 [H3C-GigabitEthernet1/0/24] port link-type trunk
@@ -1540,7 +1541,7 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 
 **最佳实践**：Trunk 口**显式 permit 业务 VLAN + **`undo permit vlan 1`，而不是图省事用 `permit vlan all`。这是项目交付与等保检查的常见扣分项。
 
-### 4_3_4 Hybrid 配置（SE 考点）
+#### 4_3_4 Hybrid 配置（SE 考点）
 **场景**：服务器需要同时属于 VLAN 10（业务）和 VLAN 20（管理），且希望不同 VLAN 的帧以不同方式发出。
 
 ```plain
@@ -1556,7 +1557,7 @@ VLAN（Virtual LAN）的本质是**在二层帧上打标记，把一台物理交
 + 服务器的网卡是普通 PC 网卡（不认 Tag），但又要承载多个业务 VLAN → Hybrid + 一个 untagged 业务 VLAN。
 + 交换机下接 AP，管理 VLAN untagged，业务 VLAN tagged → Hybrid。
 
-### ASCII 示意：三种链路类型的 Tag 处理
+#### ASCII 示意：三种链路类型的 Tag 处理
 ```plain
                 Access 口                     Trunk 口                    Hybrid 口
                (PVID=10)                 (PVID=1, permit 10,20)      (PVID=20, 10 tagged, 20 untagged)
@@ -1570,8 +1571,8 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 ---
 
-## 4_4 三层互通：Vlan-interface 与单臂路由
-### 4_4_1 三层交换机实现 VLAN 间互通（主流做法）
+### 4_4 三层互通：Vlan-interface 与单臂路由
+#### 4_4_1 三层交换机实现 VLAN 间互通（主流做法）
 ```plain
 [H3C] interface Vlan-interface 10
 [H3C-Vlan-interface10] ip address 192.168.10.1 24
@@ -1593,7 +1594,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 > **注意**：Vlan-interface 要 UP，必须满足两个条件之一：第1步 该 VLAN 内有**至少一个 Access 端口处于 UP**；第2步 有 Trunk 口 permit 该 VLAN 且端口 UP。否则接口状态为 DOWN，三层不通。
 
-### 4_4_2 单臂路由（路由器子接口）
+#### 4_4_2 单臂路由（路由器子接口）
 **场景**：只有二层交换机 + 一台路由器，需要实现 VLAN 间互通。
 
 ```plain
@@ -1622,7 +1623,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 | 成本 | 三层交换机较贵 | 已有路由器时可省成本 |
 | 适用 | 园区网主流 | 小型网络、临时方案 |
 
-### ASCII 拓扑：VLAN 间三层互通
+#### ASCII 拓扑：VLAN 间三层互通
 ```plain
         VLAN10                VLAN20                VLAN30
      192.168.10.0/24       192.168.20.0/24       192.168.30.0/24
@@ -1643,7 +1644,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
               （各网段网关在此，VLAN 间通过直连路由互通）
 ```
 
-### 📌 案例手记：网关能 ping 通，PC 之间不通
+#### 📌 案例手记：网关能 ping 通，PC 之间不通
 现象：核心交换机上创建了 Vlan-interface 10/20，PC 都能 ping 通自己的网关，但跨 VLAN 不通。
 
 排查：
@@ -1660,8 +1661,8 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 ---
 
-## 4_5 Super VLAN 与 Isolate-user-VLAN（SE 考点）
-### 4_5_1 Super VLAN（VLAN 聚合）
+### 4_5 Super VLAN 与 Isolate-user-VLAN（SE 考点）
+#### 4_5_1 Super VLAN（VLAN 聚合）
 **解决问题**：每个 VLAN 一个 /24 子网会浪费大量 IP（子网号、广播地址、网关地址）。Super VLAN 让多个 Sub VLAN 共享一个三层网段，**Sub VLAN 之间二层隔离、三层通过 Super VLAN 接口互通**。
 
 ```plain
@@ -1690,7 +1691,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 **典型场景**：酒店、宿舍楼、小区宽带——每个房间一个 Sub VLAN 做二层隔离，所有房间共享一个大网段，节省 IP。
 
-### 4_5_2 Isolate-user-VLAN（端口隔离）
+#### 4_5_2 Isolate-user-VLAN（端口隔离）
 ```plain
 [H3C] vlan 10
 [H3C-vlan10] isolate-user-vlan enable          # 开启用户隔离
@@ -1715,7 +1716,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 **典型场景**：宾馆客房、会议室、运营商宽带接入——防止横向扫描与攻击。
 
-### 两者对比
+#### 两者对比
 | 特性 | Super VLAN | Isolate-user-VLAN / 端口隔离 |
 | --- | --- | --- |
 | 层次 | 三层地址聚合 | 二层互访隔离 |
@@ -1725,8 +1726,8 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 ---
 
-## 4_6 QinQ 与 MVRP（SE 考点）
-### 4_6_1 QinQ（802.1Q-in-Q）
+### 4_6 QinQ 与 MVRP（SE 考点）
+#### 4_6_1 QinQ（802.1Q-in-Q）
 **解决问题**：运营商或大型园区需要**透传用户的 VLAN**，但 4094 个 VLAN ID 不够用。QinQ 在用户 VLAN Tag 外面再打一层运营商 VLAN Tag。
 
 ```plain
@@ -1755,7 +1756,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 **验证**：`display qinq interface`、`display vlan`。
 
-### 4_6_2 MVRP（多 VLAN 注册协议，类 GVRP）
+#### 4_6_2 MVRP（多 VLAN 注册协议，类 GVRP）
 **作用**：在交换机之间**自动同步 VLAN 信息**，避免手工在每台设备上创建 VLAN。
 
 ```plain
@@ -1784,8 +1785,8 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 ---
 
-## 4_7 VLAN 排障与验证清单
-### 典型故障与定位
+### 4_7 VLAN 排障与验证清单
+#### 典型故障与定位
 | 现象 | 检查 | 处理 |
 | --- | --- | --- |
 | 同 VLAN 内不通 | `display vlan 10`、`display mac-address` | 核对端口是否在该 VLAN、链路类型是否正确 |
@@ -1796,7 +1797,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 | Trunk 两端不通 | `display port trunk` | PVID 不一致 或 permit 列表不匹配 |
 | 删 VLAN 后广播域变大 | `display vlan 1` | 端口回落到 VLAN 1，需重新规划 |
 
-### 验证命令清单
+#### 验证命令清单
 ```plain
 <H3C> display vlan                            # VLAN 总览
 <H3C> display vlan 10                         # 指定 VLAN 详情（含成员端口）
@@ -1811,7 +1812,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 <H3C> display mvrp state                      # MVRP 状态
 ```
 
-### 📌 案例手记：Trunk PVID 不一致引发的"灵异"故障
+#### 📌 案例手记：Trunk PVID 不一致引发的"灵异"故障
 现象：两台交换机之间，VLAN 10 的终端时通时断，VLAN 20 完全正常。
 
 排查：
@@ -1826,8 +1827,8 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 
 ---
 
-## 4_8 实验笔记模板与验收清单
-### 笔记模板
+### 4_8 实验笔记模板与验收清单
+#### 笔记模板
 ```plain
 ## 实验：VLAN 划分与三层互通
 日期：____   设备：____
@@ -1855,7 +1856,7 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 - Vlan-interface UP 的前提是 VLAN 内有 UP 端口
 ```
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | VLAN 创建正确 | `display vlan` | VLAN ID 与名称符合规划表 |
@@ -1866,13 +1867,13 @@ PC <--untag--  [ 剥离 Tag   ]             [ VID=1 剥离，VID=10/20 保留 ]
 | 隔离生效 | `ping`（隔离场景） | 同 VLAN 内两台 PC 不通，但都能通网关 |
 | Super VLAN 正常 | `display supervlan` | Sub VLAN 关联正确，网段共享生效 |
 
-# 板块5 · 生成树协议（STP / RSTP / MSTP）与环路防护
+## 板块5 · 生成树协议（STP / RSTP / MSTP）与环路防护
 > 生成树是园区网"不出事"的底线技术。  
 NE 要求懂原理会配置，SE 要求能做多实例负载分担，IE 要求能在"全网瘫痪"场景下 10 分钟内定位环路。
 
 ---
 
-## 5_1 为什么需要生成树：二层环路的三大危害
+### 5_1 为什么需要生成树：二层环路的三大危害
 冗余链路是高可用网络的必然选择，但二层冗余会形成环路，带来三个灾难性问题：
 
 | 危害 | 机制 |
@@ -1883,7 +1884,7 @@ NE 要求懂原理会配置，SE 要求能做多实例负载分担，IE 要求�
 
 **关键认知**：二层帧**没有 TTL（生存时间）字段**，一旦成环就永不消失，只能靠物理断链或协议阻塞解决。这就是 STP 存在的唯一理由——**在保留物理冗余的同时，逻辑上阻塞部分端口，破除环路**。
 
-### ASCII 示意：环路的形成与破除
+#### ASCII 示意：环路的形成与破除
 ```plain
        【环路形成】                        【STP 阻塞后】
         SW1 ---- SW2                        SW1 ---- SW2
@@ -1895,7 +1896,7 @@ NE 要求懂原理会配置，SE 要求能做多实例负载分担，IE 要求�
    MAC 表反复震荡，CPU 飙升
 ```
 
-### 📌 案例手记：一根网线放倒整栋办公楼
+#### 📌 案例手记：一根网线放倒整栋办公楼
 某公司前台为了方便，把墙上的两个网口用一根网线直接连了起来（接在同一台接入交换机上）。
 
 结果：整栋楼的终端上网极慢，然后彻底断网。
@@ -1914,20 +1915,20 @@ NE 要求懂原理会配置，SE 要求能做多实例负载分担，IE 要求�
 
 ---
 
-## 5_2 STP（802.1D）原理
-### 5_2_1 基本思路
+### 5_2 STP（802.1D）原理
+#### 5_2_1 基本思路
 1. 选举**根桥**（Root Bridge）：全网桥 ID 最小的交换机。
 2. 每个非根桥选一个**根端口**（Root Port）：到根桥路径开销最小的端口。
 3. 每条链路选一个**指定端口**（Designated Port）。
 4. 剩下的端口**阻塞**（Blocking）。
 
-### 5_2_2 桥 ID 与端口 ID
+#### 5_2_2 桥 ID 与端口 ID
 ```plain
 桥 ID（Bridge ID）= 优先级（16 bit，默认 32768，步长 4096） + MAC 地址（48 bit）
 端口 ID（Port ID） = 优先级（4 bit，默认 128，步长 16） + 端口号
 ```
 
-### 路径开销标准
+#### 路径开销标准
 | 链路速率 | 802.1D 开销 | 802.1t（H3C 默认） |
 | --- | --- | --- |
 | 10 Mbps | 100 | 2,000,000 |
@@ -1938,7 +1939,7 @@ NE 要求懂原理会配置，SE 要求能做多实例负载分担，IE 要求�
 
 > **注意**：`stp pathcost-standard` 全网必须一致，否则计算结果会与预期不符。
 
-### 5_2_3 BPDU 与定时器
+#### 5_2_3 BPDU 与定时器
 BPDU（Bridge Protocol Data Unit）是 STP 的协议报文，默认每 2 秒发送一次，目的 MAC 为组播 **01-80-C2-00-00-00**。
 
 | 定时器 | 默认值 | 作用 |
@@ -1947,7 +1948,7 @@ BPDU（Bridge Protocol Data Unit）是 STP 的协议报文，默认每 2 秒发�
 | Forward Delay | 15 秒 | Listening → Learning、Learning → Forwarding 各等 15 秒 |
 | Max Age | 20 秒 | BPDU 老化时间，超时认为根桥失效 |
 
-### 5_2_4 端口状态机（考试高频）
+#### 5_2_4 端口状态机（考试高频）
 ```plain
 Blocking ──(Max Age 20s)──> Listening ──(15s)──> Learning ──(15s)──> Forwarding
    |                                                                      |
@@ -1964,8 +1965,8 @@ Disabled   ：端口未启用
 
 ---
 
-## 5_3 RSTP（802.1w）：快速收敛
-### 5_3_1 相比 STP 的改进
+### 5_3 RSTP（802.1w）：快速收敛
+#### 5_3_1 相比 STP 的改进
 | 改进点 | 说明 |
 | --- | --- |
 | 端口状态简化 | 5 种 → 3 种：**Discarding / Learning / Forwarding** |
@@ -1973,7 +1974,7 @@ Disabled   ：端口未启用
 | 收敛机制 | 引入 **P/A（Proposal/Agreement）握手机制**，可实现秒级收敛 |
 | 边缘端口 | 接终端的端口可**立即进入 Forwarding**，无需等待 30 秒 |
 
-### 5_3_2 P/A 机制简述
+#### 5_3_2 P/A 机制简述
 新链路 UP 后：
 
 1. 两端先都假定自己是指定端口，互发 **Proposal 置位**的 BPDU。
@@ -1981,7 +1982,7 @@ Disabled   ：端口未启用
 3. 上游收到 Agreement 后**立即进入 Forwarding**。
 4. 这个过程逐段向下游推进，**无需依赖定时器**，因此收敛极快。
 
-### 5_3_3 边缘端口
+#### 5_3_3 边缘端口
 ```plain
 [H3C] interface GigabitEthernet 1/0/1
 [H3C-GigabitEthernet1/0/1] stp edged-port enable
@@ -1998,8 +1999,8 @@ Disabled   ：端口未启用
 
 ---
 
-## 5_4 MSTP（802.1s）：多实例负载分担
-### 5_4_1 为什么需要 MSTP
+### 5_4 MSTP（802.1s）：多实例负载分担
+#### 5_4_1 为什么需要 MSTP
 STP/RSTP 的缺陷：**所有 VLAN 共用一棵生成树**，被阻塞的链路完全闲置，浪费带宽。  
 MSTP 引入"实例"概念，把不同 VLAN 映射到不同实例，**每个实例独立计算生成树**，从而实现负载分担。
 
@@ -2009,7 +2010,7 @@ MSTP 引入"实例"概念，把不同 VLAN 映射到不同实例，**每个实�
     结果：两条上行链路都被利用，且互为备份
 ```
 
-### 5_4_2 MST 域三要素（必须一致，否则无法互通）
+#### 5_4_2 MST 域三要素（必须一致，否则无法互通）
 同一 MST 域内的交换机，以下三项配置必须**完全相同**：
 
 1. **域名**（Region Name）
@@ -2018,7 +2019,7 @@ MSTP 引入"实例"概念，把不同 VLAN 映射到不同实例，**每个实�
 
 > 三要素不一致，交换机会被认为处于不同 MST 域，导致实例计算异常。这是 MSTP 最常见的配置错误。
 
-### 5_4_3 MSTP 配置（SE 必会）
+#### 5_4_3 MSTP 配置（SE 必会）
 ```plain
 # 1. 进入 MST 域视图
 [H3C] stp region-configuration
@@ -2048,7 +2049,7 @@ MSTP 引入"实例"概念，把不同 VLAN 映射到不同实例，**每个实�
 [H3C] stp instance 1 priority 4096      # 步长 4096，取值 0/4096/8192.../61440
 ```
 
-### 5_4_4 查看与验证
+#### 5_4_4 查看与验证
 ```plain
 <H3C> display stp                                # 全局 STP 状态
 <H3C> display stp brief                          # 端口角色与状态速览（最常用）
@@ -2058,7 +2059,7 @@ MSTP 引入"实例"概念，把不同 VLAN 映射到不同实例，**每个实�
 <H3C> display stp interface g1/0/1               # 单端口 STP 详情
 ```
 
-### display stp brief 输出解读
+#### display stp brief 输出解读
 ```plain
 MST ID   Port                      Role   STP State     Protection
 0        GigabitEthernet1/0/1      ROOT   FORWARDING    NONE
@@ -2078,7 +2079,7 @@ MST ID   Port                      Role   STP State     Protection
 
 ---
 
-## 5_5 生成树保护机制（SE/IE 必会）
+### 5_5 生成树保护机制（SE/IE 必会）
 | 保护机制 | 作用 | 配置 | 适用场景 |
 | --- | --- | --- | --- |
 | BPDU 保护 | 边缘端口收到 BPDU 后立即关闭端口 | `stp bpdu-protection` | 接入层边缘端口 |
@@ -2087,7 +2088,7 @@ MST ID   Port                      Role   STP State     Protection
 | TC 保护 | 限制 TC-BPDU 处理频率，防攻击 | `stp tc-protection` | 全局 |
 | 防 TC-BPDU 攻击 | 单位时间内处理 TC-BPDU 的次数限制 | `stp tc-protection threshold 3` | 全局 |
 
-### 配置示例
+#### 配置示例
 ```plain
 # 全局开启 BPDU 保护（配合边缘端口使用）
 [H3C] stp bpdu-protection
@@ -2116,8 +2117,8 @@ MST ID   Port                      Role   STP State     Protection
 
 ---
 
-## 5_6 环路检测与故障定位
-### 5_6_1 环路检测（Loopback Detection）
+### 5_6 环路检测与故障定位
+#### 5_6_1 环路检测（Loopback Detection）
 ```plain
 # 全局开启
 [H3C] loopback-detection global enable vlan 1 to 4094
@@ -2134,7 +2135,7 @@ MST ID   Port                      Role   STP State     Protection
 <H3C> display loopback-detection
 ```
 
-### 5_6_2 环路故障定位五步法
+#### 5_6_2 环路故障定位五步法
 ```plain
 第1步 现象确认：全网慢 / 部分慢 / 时通时断？
 第2步 CPU 检查：display cpu-usage（环路时通常 > 70%）
@@ -2151,7 +2152,7 @@ MST ID   Port                      Role   STP State     Protection
 <H3C> display stp tc                             # TC 计数是否异常增长（拓扑震荡）
 ```
 
-### 📌 案例手记：STP 没开 + 新交换机接入 = 全网瘫痪
+#### 📌 案例手记：STP 没开 + 新交换机接入 = 全网瘫痪
 某园区新增一台接入交换机，工程师接好线后没做任何配置就上电（该交换机 STP 默认关闭）。
 
 结果：新交换机与原有网络形成环路，全网中断。
@@ -2173,7 +2174,7 @@ MST ID   Port                      Role   STP State     Protection
 
 ---
 
-## 5_7 生成树配置命令汇总
+### 5_7 生成树配置命令汇总
 ```plain
 [H3C] stp enable                              # 开启 STP（默认关闭，必须手工开启！）
 [H3C] stp mode { stp | rstp | mstp }          # 工作模式，默认 mstp
@@ -2198,8 +2199,8 @@ MST ID   Port                      Role   STP State     Protection
 
 ---
 
-## 5_8 实验笔记模板与验收清单
-### 笔记模板
+### 5_8 实验笔记模板与验收清单
+#### 笔记模板
 ```plain
 ## 实验：MSTP 多实例负载分担 + 保护机制
 日期：____   设备：____
@@ -2228,7 +2229,7 @@ MST ID   Port                      Role   STP State     Protection
 - BPDU 保护 shutdown 的端口需手工恢复
 ```
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | STP 已开启 | `display stp` | 全局状态为 enabled |
@@ -2240,14 +2241,14 @@ MST ID   Port                      Role   STP State     Protection
 | 保护机制生效 | 人为接交换机测试 | 边缘口被 shutdown 并记录日志 |
 | 环路可定位 | 五步法 | 5 分钟内定位并消除 |
 
-# 板块6 · 网络高可靠性：链路聚合、IRF 堆叠、M-LAG、VRRP 与 BFD
+## 板块6 · 网络高可靠性：链路聚合、IRF 堆叠、M-LAG、VRRP 与 BFD
 > 本板块对应 H3CSE-RS-SW（GB0-372）的核心章节，也是 H3CIE 实验中"高可靠网络规划与部署"的必考内容。  
 核心能力：**知道每种技术解决什么问题、失效边界在哪、什么时候该换另一种。**
 
 ---
 
-## 6_1 链路聚合（Link Aggregation）
-### 6_1_1 作用与模式
+### 6_1 链路聚合（Link Aggregation）
+#### 6_1_1 作用与模式
 链路聚合把多条物理链路捆绑成一条逻辑链路，实现**带宽叠加 + 链路冗余 + 负载分担**。
 
 | 模式 | 协议 | 特点 |
@@ -2255,7 +2256,7 @@ MST ID   Port                      Role   STP State     Protection
 | 静态聚合 | 无 | 手工配置，两端不协商；配置错误时可能形成环路或丢包 |
 | 动态聚合 | LACP（802.3ad） | 通过 LACPDU 协商，自动检测对端，安全性高，**生产推荐** |
 
-### 6_1_2 配置（V7 标准写法）
+#### 6_1_2 配置（V7 标准写法）
 ```plain
 # 1. 创建二层聚合接口
 [H3C] interface Bridge-Aggregation 1
@@ -2287,7 +2288,7 @@ MST ID   Port                      Role   STP State     Protection
 [H3C-GigabitEthernet1/0/1] port link-aggregation group 1
 ```
 
-### 6_1_3 负载分担模式
+#### 6_1_3 负载分担模式
 ```plain
 [H3C] link-aggregation global load-sharing mode source-mac destination-mac
 [H3C] link-aggregation global load-sharing mode source-ip destination-ip source-port destination-port
@@ -2301,7 +2302,7 @@ MST ID   Port                      Role   STP State     Protection
 + 三层环境用 **IP 哈希**。
 + 若流量集中在少数几台服务器（"大象流"），应加入**端口号做五元组哈希**，否则可能出现单条链路跑满、另一条空闲的"极化"现象。
 
-### 6_1_4 查看与排错
+#### 6_1_4 查看与排错
 ```plain
 <H3C> display link-aggregation verbose                        # 聚合组详细信息
 <H3C> display link-aggregation summary                        # 聚合组汇总
@@ -2310,7 +2311,7 @@ MST ID   Port                      Role   STP State     Protection
 <H3C> display interface Bridge-Aggregation 1                  # 聚合接口流量
 ```
 
-### 常见故障
+#### 常见故障
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |
 | 成员口状态为 **I**（Individual） | 两端聚合模式不一致（一动一静） | 统一为 dynamic 或 static |
@@ -2323,8 +2324,8 @@ MST ID   Port                      Role   STP State     Protection
 
 ---
 
-## 6_2 IRF 技术原理
-### 6_2_1 什么是 IRF
+### 6_2 IRF 技术原理
+#### 6_2_1 什么是 IRF
 IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**横向虚拟化技术**，IRF2 为第二代。  
 核心思想：将多台物理设备通过堆叠链路连接，**虚拟化为一台逻辑设备**，在网络中以单一设备形态运行。
 
@@ -2335,7 +2336,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 | 高可靠性 | Master 故障后 Slave 自动接替，实现 1:N 设备级备份 |
 | 弹性扩展 | 按需增加成员设备，扩展端口密度与转发能力 |
 
-### IRF 与 M-LAG 的选型
+#### IRF 与 M-LAG 的选型
 | 对比 | IRF | M-LAG / DRNI |
 | --- | --- | --- |
 | 控制平面 | 合一（一台逻辑设备） | 独立（两台设备仍是两台） |
@@ -2345,8 +2346,8 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 
 **一句话**：**园区网首选 IRF，数据中心核心首选 M-LAG。**
 
-### 6_2_2 核心概念
-#### 成员编号（Member ID）
+#### 6_2_2 核心概念
+##### 成员编号（Member ID）
 + 范围通常 1~10（不同机型略有差异）。
 + 建立 IRF 时各成员编号**必须唯一**，否则无法建立。
 + 修改后**必须保存配置并重启才生效**。
@@ -2358,7 +2359,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 <H3C> reboot
 ```
 
-#### 成员优先级（Priority）
+##### 成员优先级（Priority）
 + 缺省值 1，**数值越大越优先当选 Master**。
 + 推荐：主设备设 16~32，备设备保持默认或更低。
 
@@ -2366,7 +2367,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 [H3C] irf member 1 priority 32
 ```
 
-#### IRF 端口与连接铁律
+##### IRF 端口与连接铁律
 每台设备有两个 IRF 逻辑端口：
 
 | IRF 端口 | 连接规则 |
@@ -2383,7 +2384,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 + 所有物理端口均 down 时，IRF 端口才 down。
 + 绑定后自动关闭三层功能，转为专用堆叠通道。
 
-#### IRF 域（Domain）
+##### IRF 域（Domain）
 + 一个 IRF 对应一个域，用 **Domain ID** 区分同一网络中的不同 IRF。
 + 缺省 Domain ID 为 0。
 + **重要**：若 LACP MAD / ARP MAD / ND MAD 组网的中间设备本身也是 IRF 系统，两者的 **Domain ID 必须不同**，否则会造成检测异常甚至业务中断。
@@ -2392,7 +2393,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 [H3C] irf domain 10
 ```
 
-### 6_2_3 角色选举规则（按优先级从高到低）
+#### 6_2_3 角色选举规则（按优先级从高到低）
 1. **当前 Master 优先** —— 已有 Master 的设备优先保持。
 2. **本地主控板优先** —— 本地主控板优于本地备用主控板。
 3. **优先级数值大优先** —— 缺省 1。
@@ -2401,7 +2402,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 
 > **软件升级机制**：升级 Master 时，其他成员设备自动同步升级，只需在 Master 上执行升级操作。
 
-### 6_2_4 连接拓扑
+#### 6_2_4 连接拓扑
 | 拓扑 | 结构 | 特点 |
 | --- | --- | --- |
 | 链形（Daisy-Chain） | A—B—C | 配置简单、线缆少；**任一链路故障即导致 IRF 分裂** |
@@ -2417,7 +2418,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
           [SW4] ══ [SW3]
 ```
 
-### 6_2_5 连接介质
+#### 6_2_5 连接介质
 | 介质 | 适用场景 |
 | --- | --- |
 | 专用堆叠线缆 + 专用接口卡 | 高性能、高可靠要求 |
@@ -2429,8 +2430,8 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 
 ---
 
-## 6_3 IRF 配置实战（完整可复现）
-### 6_3_1 场景
+### 6_3 IRF 配置实战（完整可复现）
+#### 6_3_1 场景
 两台交换机 DeviceA、DeviceB 组建 IRF2，每台用两个万兆口做堆叠口：
 
 ```plain
@@ -2441,7 +2442,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
    连接规则：DeviceA 的 IRF-Port2 → DeviceB 的 IRF-Port1（交叉互联）
 ```
 
-### 6_3_2 DeviceA 配置（主设备）
+#### 6_3_2 DeviceA 配置（主设备）
 ```plain
 <H3C> system-view
 [H3C] sysname DeviceA
@@ -2471,7 +2472,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 [DeviceA] save force
 ```
 
-### 6_3_3 DeviceB 配置（备设备）
+#### 6_3_3 DeviceB 配置（备设备）
 ```plain
 <H3C> system-view
 [H3C] sysname DeviceB
@@ -2514,7 +2515,7 @@ IRF（Intelligent Resilient Framework，智能弹性架构）是 H3C 自研的**
 
 > **注意**：两台设备都配置完成后**分别重启**，重启后自动完成 IRF 选举与合并。合并后备设备会自动同步主设备的配置。
 
-### 6_3_4 验证
+#### 6_3_4 验证
 ```plain
 <H3C> display irf                        # IRF 成员信息与角色
 <H3C> display irf configuration          # IRF 端口与物理端口绑定
@@ -2531,7 +2532,7 @@ MemberID  Role    Priority  CPU-Mac         Description
 2         Standby 1         xxxx-xxxx-xxxx  DeviceB
 ```
 
-### 📌 案例手记：IRF-Port 接反了，堆叠死活起不来
+#### 📌 案例手记：IRF-Port 接反了，堆叠死活起不来
 现场两台 S5560 做 IRF，配置全部照抄，但重启后始终是两台独立设备。
 
 排查：
@@ -2549,18 +2550,18 @@ MemberID  Role    Priority  CPU-Mac         Description
 
 ---
 
-## 6_4 MAD 检测机制（防分裂）
-### 6_4_1 为什么需要 MAD
+### 6_4 MAD 检测机制（防分裂）
+#### 6_4_1 为什么需要 MAD
 IRF 分裂（堆叠链路断开）后，两台设备都会有相同的 IP 与配置，造成**网络中出现两台"相同"的设备**——IP 冲突、转发混乱。MAD（Multi-Active Detection）的作用就是**检测到分裂后，让其中一半进入 Recovery 状态（业务口全部关闭）**，只保留一个 Active。
 
-### 6_4_2 三种 MAD 方式
+#### 6_4_2 三种 MAD 方式
 | 方式 | 原理 | 特点 |
 | --- | --- | --- |
 | LACP MAD | 通过 LACP 报文携带 Domain ID 与 Active ID | 需中间设备支持 LACP，**最常用** |
 | ARP MAD / ND MAD | 通过免费 ARP / ND 报文检测 | 需中间设备，配置简单 |
 | BFD MAD | 通过专用三层链路跑 BFD | **需独立 MAD 链路**，检测最快，最可靠 |
 
-### 6_4_3 LACP MAD 配置（推荐）
+#### 6_4_3 LACP MAD 配置（推荐）
 ```plain
 # IRF 系统侧（聚合口开 LACP MAD）
 [H3C] interface Bridge-Aggregation 1
@@ -2574,7 +2575,7 @@ IRF 分裂（堆叠链路断开）后，两台设备都会有相同的 IP 与配
 [MID-Bridge-Aggregation1] quit
 ```
 
-### 6_4_4 BFD MAD 配置（最可靠）
+#### 6_4_4 BFD MAD 配置（最可靠）
 ```plain
 # 创建 MAD 专用 VLAN 与三层接口
 [H3C] vlan 4000
@@ -2597,7 +2598,7 @@ IRF 分裂（堆叠链路断开）后，两台设备都会有相同的 IP 与配
 [H3C] undo stp enable vlan 4000        # 或在接口上关闭 STP
 ```
 
-### 6_4_5 验证与恢复
+#### 6_4_5 验证与恢复
 ```plain
 <H3C> display mad                        # MAD 状态
 <H3C> display mad verbose
@@ -2609,8 +2610,8 @@ IRF 分裂（堆叠链路断开）后，两台设备都会有相同的 IP 与配
 
 ---
 
-## 6_5 M-LAG / DRNI（跨设备链路聚合）
-### 6_5_1 原理
+### 6_5 M-LAG / DRNI（跨设备链路聚合）
+#### 6_5_1 原理
 M-LAG（H3C 称 DRNI）把**两台独立设备**在逻辑上虚拟成一台，下游设备通过普通链路聚合分别与两台设备相连，实现：
 
 + **无阻塞转发**：两条链路都工作。
@@ -2625,7 +2626,7 @@ M-LAG（H3C 称 DRNI）把**两台独立设备**在逻辑上虚拟成一台，�
                   [ 下游交换机 / 服务器 ]
 ```
 
-### 6_5_2 配置要点
+#### 6_5_2 配置要点
 ```plain
 # SW-A
 [SW-A] drni system-mac 0001-0001-0001          # 两端必须一致
@@ -2655,7 +2656,7 @@ M-LAG（H3C 称 DRNI）把**两台独立设备**在逻辑上虚拟成一台，�
 <SW-A> display drni drcp
 ```
 
-### 6_5_3 IRF 与 M-LAG 决策表
+#### 6_5_3 IRF 与 M-LAG 决策表
 | 决策因素 | 选 IRF | 选 M-LAG |
 | --- | --- | --- |
 | 需要简化管理（一台设备） | ✓ |  |
@@ -2667,11 +2668,11 @@ M-LAG（H3C 称 DRNI）把**两台独立设备**在逻辑上虚拟成一台，�
 
 ---
 
-## 6_6 VRRP（网关冗余）
-### 6_6_1 原理
+### 6_6 VRRP（网关冗余）
+#### 6_6_1 原理
 VRRP 把多台路由器/三层交换机组成一个**虚拟路由器**，对外提供一个虚拟 IP 作为网关。主机只配置虚拟 IP 作为网关，Master 故障时 Backup 接管。
 
-### 6_6_2 配置
+#### 6_6_2 配置
 ```plain
 # 主设备（Master）
 [H3C] interface Vlan-interface 10
@@ -2707,7 +2708,7 @@ VRRP 把多台路由器/三层交换机组成一个**虚拟路由器**，对外�
 [SW-B-Vlan-interface20] vrrp vrid 20 priority 120
 ```
 
-### 6_6_3 验证
+#### 6_6_3 验证
 ```plain
 <H3C> display vrrp                        # VRRP 概要
 <H3C> display vrrp verbose                # 详细信息（含状态、优先级、追踪对象）
@@ -2718,8 +2719,8 @@ VRRP 把多台路由器/三层交换机组成一个**虚拟路由器**，对外�
 
 ---
 
-## 6_7 BFD 与 NQA（快速故障检测）
-### 6_7_1 BFD
+### 6_7 BFD 与 NQA（快速故障检测）
+#### 6_7_1 BFD
 BFD 提供**毫秒级**的链路故障检测，可与静态路由、OSPF、BGP、VRRP 联动。
 
 ```plain
@@ -2746,7 +2747,7 @@ BFD 提供**毫秒级**的链路故障检测，可与静态路由、OSPF、BGP�
 <H3C> display bfd session verbose
 ```
 
-### 6_7_2 NQA
+#### 6_7_2 NQA
 NQA（网络质量分析）可探测链路的时延、抖动、丢包，常用于**出口链路质量探测与选路**。
 
 ```plain
@@ -2762,7 +2763,7 @@ NQA（网络质量分析）可探测链路的时延、抖动、丢包，常用�
 
 **验证**：`display nqa result`、`display nqa statistics`。
 
-### 📌 案例手记：主链路"假死"，浮动路由不切换
+#### 📌 案例手记：主链路"假死"，浮动路由不切换
 某企业两条出口专线，主链路走优先级 60 的静态路由，备链路 100。某次运营商光端机故障，主链路的**本端接口仍然是 UP**，路由不切换，业务中断半小时。
 
 分析：**静态路由只能感知直连接口 down**，无法感知"对端设备死机但本端接口仍 UP"。
@@ -2779,8 +2780,8 @@ NQA（网络质量分析）可探测链路的时延、抖动、丢包，常用�
 
 ---
 
-## 6_8 高可靠方案选型与验收清单
-### 选型决策速查
+### 6_8 高可靠方案选型与验收清单
+#### 选型决策速查
 | 需求 | 推荐方案 |
 | --- | --- |
 | 接入/汇聚上行带宽叠加 | 链路聚合（动态 LACP） |
@@ -2790,7 +2791,7 @@ NQA（网络质量分析）可探测链路的时延、抖动、丢包，常用�
 | 跨设备链路故障快速感知 | BFD 与路由/VRRP 联动 |
 | 出口链路质量选路 | NQA + Track |
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | 聚合组正常 | `display link-aggregation verbose` | 成员口状态为 S（Selected），非 I |
@@ -2803,7 +2804,7 @@ NQA（网络质量分析）可探测链路的时延、抖动、丢包，常用�
 | BFD 会话 UP | `display bfd session` | State 为 Up |
 | 切换时间达标 | 断开主链路计时 | 业务中断时间在预期范围内 |
 
-### 实验笔记模板
+#### 实验笔记模板
 ```plain
 ## 实验：IRF 堆叠 + MAD + 链路聚合
 日期：____   设备：____
@@ -2833,14 +2834,14 @@ NQA（网络质量分析）可探测链路的时延、抖动、丢包，常用�
 - MAD 中间设备 Domain ID 要区分
 ```
 
-# 板块7 · IP 路由基础与 OSPF / IS-IS / BGP
+## 板块7 · IP 路由基础与 OSPF / IS-IS / BGP
 > 本板块覆盖 H3CNE 的静态路由要求，以及 H3CSE-RS-RT（GB0-382）的主体内容：OSPF、IS-IS、BGP、路由控制、IPv6/SRv6。  
 IE 阶段的核心不是"会配"，而是**"邻居起不来时能在 3 分钟内定位原因"**。
 
 ---
 
-## 7_1 路由表与转发原理
-### 7_1_1 路由表结构
+### 7_1 路由表与转发原理
+#### 7_1_1 路由表结构
 ```plain
 <H3C> display ip routing-table
 
@@ -2859,7 +2860,7 @@ Destination/Mask     Proto    Pre   Cost    NextHop        Interface
 | NextHop | 下一跳 |
 | Interface | 出接口 |
 
-### 7_1_2 路由优先级（必须背）
+#### 7_1_2 路由优先级（必须背）
 | 路由类型 | 默认优先级 |
 | --- | --- |
 | 直连（Direct） | 0 |
@@ -2871,20 +2872,20 @@ Destination/Mask     Proto    Pre   Cost    NextHop        Interface
 | IBGP | 255 |
 | EBGP | 255 |
 
-### 7_1_3 最长匹配原则
+#### 7_1_3 最长匹配原则
 数据包转发时，选择**掩码最长（最精确）**的路由条目，而不是优先级最高的。  
 例如同时存在 `192.168.0.0/16`（静态）与 `192.168.1.0/24`（OSPF），去往 192.168.1.10 的报文会走 **/24 的 OSPF 路由**。
 
 > 优先级只在同一目的网段的不同来源之间比较；不同掩码之间先比掩码长度。
 
-### 7_1_4 路由迭代（递归查找）
+#### 7_1_4 路由迭代（递归查找）
 静态路由只指定下一跳 IP 时，设备需要再查一次路由表找到该下一跳的出接口，这个过程叫**路由迭代**。  
 若下一跳不可达，该静态路由**不会出现在路由表中**——这是"配了静态路由但不生效"的常见原因。
 
 ---
 
-## 7_2 静态路由
-### 7_2_1 基本配置
+### 7_2 静态路由
+#### 7_2_1 基本配置
 ```plain
 # 指定下一跳（推荐，以太网环境）
 [H3C] ip route-static 192.168.2.0 255.255.255.0 10.1.1.2
@@ -2900,7 +2901,7 @@ Destination/Mask     Proto    Pre   Cost    NextHop        Interface
 [H3C] ip route-static 0.0.0.0 0.0.0.0 192.168.10.254
 ```
 
-### 7_2_2 浮动静态路由（主备切换）
+#### 7_2_2 浮动静态路由（主备切换）
 通过修改优先级实现主备：主链路走优先级 60 的静态路由，备链路配优先级 100（数值更大，主链路正常时不生效）。
 
 ```plain
@@ -2910,7 +2911,7 @@ Destination/Mask     Proto    Pre   Cost    NextHop        Interface
 
 **局限**：静态路由只能感知直连接口 down。如果主链路是对端设备死机而本端接口仍 UP，浮动路由不会切换——此时必须用 **BFD/NQA 联动**（见板块6 的 6_7）。
 
-### 7_2_3 等价路由（负载分担）
+#### 7_2_3 等价路由（负载分担）
 ```plain
 [H3C] ip route-static 192.168.2.0 24 10.1.1.2
 [H3C] ip route-static 192.168.2.0 24 10.1.2.2
@@ -2918,14 +2919,14 @@ Destination/Mask     Proto    Pre   Cost    NextHop        Interface
 
 两条同优先级静态路由同时生效，流量按流（默认）或按包分担。
 
-### 7_2_4 黑洞路由（防环与聚合）
+#### 7_2_4 黑洞路由（防环与聚合）
 ```plain
 [H3C] ip route-static 10.0.0.0 255.255.0.0 NULL0
 ```
 
 在做路由汇总时，必须配一条指向 NULL0 的黑洞路由，否则去往不存在子网的报文会在网络中来回转发（形成路由环路）。
 
-### 7_2_5 查看
+#### 7_2_5 查看
 ```plain
 <H3C> display ip routing-table
 <H3C> display ip routing-table 192.168.2.10             # 查看特定目的路由
@@ -2935,7 +2936,7 @@ Destination/Mask     Proto    Pre   Cost    NextHop        Interface
 
 ---
 
-## 7_3 RIP（了解即可，NE 考点）
+### 7_3 RIP（了解即可，NE 考点）
 RIP 是基于距离矢量的协议，**跳数最大 15**，收敛慢，现网已基本淘汰，但考试仍考原理。
 
 ```plain
@@ -2954,8 +2955,8 @@ RIP 是基于距离矢量的协议，**跳数最大 15**，收敛慢，现网已
 
 ---
 
-## 7_4 OSPF（GB0-382 核心）
-### 7_4_1 基本原理
+### 7_4 OSPF（GB0-382 核心）
+#### 7_4_1 基本原理
 OSPF 是**链路状态协议**，用 SPF（Dijkstra）算法计算最短路径，以 **Cost = 100Mbps / 接口带宽**作为度量。
 
 **三张表**：
@@ -2964,7 +2965,7 @@ OSPF 是**链路状态协议**，用 SPF（Dijkstra）算法计算最短路径�
 + 链路状态数据库 LSDB：`display ospf lsdb`
 + 路由表：`display ip routing-table`
 
-### 7_4_2 Router ID 与区域
+#### 7_4_2 Router ID 与区域
 ```plain
 [H3C] router id 1.1.1.1                                 # 建议手工指定（用 Loopback 地址）
 [H3C] ospf 1 router-id 1.1.1.1
@@ -2983,7 +2984,7 @@ OSPF 是**链路状态协议**，用 SPF（Dijkstra）算法计算最短路径�
 [H3C-GigabitEthernet1/0/1] ospf 1 area 0
 ```
 
-### 7_4_3 邻居建立的七个状态
+#### 7_4_3 邻居建立的七个状态
 ```plain
 Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 ```
@@ -2998,7 +2999,7 @@ Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 | Loading | 请求缺失的 LSA（LSR/LSU/LSAck） |
 | Full | LSDB 同步完成，邻接建立 |
 
-### 7_4_4 邻居起不来的十大原因（排障清单，必背）
+#### 7_4_4 邻居起不来的十大原因（排障清单，必背）
 | 原因 | 检查命令 |
 | --- | --- |
 | 接口未 UP | `display interface brief` |
@@ -3012,7 +3013,7 @@ Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 | 区域类型不一致（Stub/NSSA） | `display ospf` |
 | ACL 拦截 224.0.0.5 或协议号 89 | `display acl all` |
 
-### 7_4_5 DR/BDR 选举
+#### 7_4_5 DR/BDR 选举
 在 Broadcast / NBMA 网络中，需要选举 DR（指定路由器）与 BDR：
 
 + 比较**接口优先级**（默认 1，0 表示不参与）。
@@ -3023,7 +3024,7 @@ Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 [H3C-GigabitEthernet1/0/1] ospf dr-priority 10
 ```
 
-### 7_4_6 多区域与特殊区域
+#### 7_4_6 多区域与特殊区域
 | 区域类型 | 允许的 LSA | 用途 |
 | --- | --- | --- |
 | 普通区域 | Type 1/2/3/4/5/7 | 默认 |
@@ -3044,7 +3045,7 @@ Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 [H3C-ospf-1-area-0.0.0.10] nssa no-summary
 ```
 
-### 7_4_7 路由引入与缺省路由下发
+#### 7_4_7 路由引入与缺省路由下发
 ```plain
 # 引入直连/静态
 [H3C-ospf-1] import-route direct
@@ -3055,7 +3056,7 @@ Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 [H3C-ospf-1] default-route-advertise always             # 无条件下发
 ```
 
-### 7_4_8 常用验证命令
+#### 7_4_8 常用验证命令
 ```plain
 <H3C> display ospf peer                      # 邻居表（看状态是否 Full）
 <H3C> display ospf peer brief
@@ -3067,7 +3068,7 @@ Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 <H3C> display ospf abr-asbr                  # ABR / ASBR 信息
 ```
 
-### 📌 案例手记：邻居卡在 ExStart，MTU 的锅
+#### 📌 案例手记：邻居卡在 ExStart，MTU 的锅
 现场两台路由器通过专线互联，OSPF 邻居一直卡在 **ExStart**，反复协商不成功。
 
 排查：
@@ -3083,8 +3084,8 @@ Down → Init → 2-Way → ExStart → Exchange → Loading → Full
 
 ---
 
-## 7_5 IS-IS
-### 7_5_1 基本原理
+### 7_5 IS-IS
+#### 7_5_1 基本原理
 IS-IS 是**链路状态协议**，常用于运营商与大型园区骨干。
 
 | 概念 | 说明 |
@@ -3095,7 +3096,7 @@ IS-IS 是**链路状态协议**，常用于运营商与大型园区骨干。
 | Level-1-2 | 同时参与（类似 ABR） |
 | DIS | 广播网络上选举的伪节点（类似 DR，但**可抢占**） |
 
-### 7_5_2 配置
+#### 7_5_2 配置
 ```plain
 [H3C] isis 1
 [H3C-isis-1] network-entity 10.0000.0000.0001.00
@@ -3113,7 +3114,7 @@ IS-IS 是**链路状态协议**，常用于运营商与大型园区骨干。
 [H3C-LoopBack0] isis enable 1
 ```
 
-### 7_5_3 验证
+#### 7_5_3 验证
 ```plain
 <H3C> display isis peer
 <H3C> display isis lsdb
@@ -3122,7 +3123,7 @@ IS-IS 是**链路状态协议**，常用于运营商与大型园区骨干。
 <H3C> display isis brief
 ```
 
-### 7_5_4 IS-IS 与 OSPF 对比
+#### 7_5_4 IS-IS 与 OSPF 对比
 | 对比项 | OSPF | IS-IS |
 | --- | --- | --- |
 | 封装 | IP 之上（协议号 89） | 二层之上（更贴近链路层） |
@@ -3132,8 +3133,8 @@ IS-IS 是**链路状态协议**，常用于运营商与大型园区骨干。
 
 ---
 
-## 7_6 BGP
-### 7_6_1 基本原理
+### 7_6 BGP
+#### 7_6_1 基本原理
 BGP 是**路径矢量协议**，用于自治系统（AS）之间，靠**丰富的属性**做策略控制，而非最短路径。
 
 | 概念 | 说明 |
@@ -3143,7 +3144,7 @@ BGP 是**路径矢量协议**，用于自治系统（AS）之间，靠**丰富�
 | 通告原则 | 只通告**最优且有效**的路由；从 IBGP 学到的不通告给 IBGP（需路由反射器或全互联） |
 | 下一跳 | EBGP 通告时下一跳改变；IBGP 通告时下一跳默认不变（需 `next-hop-local`） |
 
-### 7_6_2 配置
+#### 7_6_2 配置
 ```plain
 # EBGP
 [H3C] bgp 65001
@@ -3162,7 +3163,7 @@ BGP 是**路径矢量协议**，用于自治系统（AS）之间，靠**丰富�
 [H3C-bgp-default] peer 3.3.3.3 ebgp-max-hop 2
 ```
 
-### 7_6_3 BGP 状态机
+#### 7_6_3 BGP 状态机
 ```plain
 Idle → Connect → Active → OpenSent → OpenConfirm → Established
 ```
@@ -3179,7 +3180,7 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 | EBGP 未配 ebgp-max-hop | `display bgp peer` |
 | Router ID 冲突 | `display bgp peer` |
 
-### 7_6_4 BGP 选路规则（13 条，记住前 8 条）
+#### 7_6_4 BGP 选路规则（13 条，记住前 8 条）
 1. 优选 **Preferred-Value**（权重）最大的路由（H3C 私有，本地有效）。
 2. 优选 **Local_Preference** 最大的路由。
 3. 优选**本地生成**的路由（network > import > 聚合）。
@@ -3190,7 +3191,7 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 8. 优选到 **下一跳 IGP 度量**最小的路由。
 9. （后续：等价路由、Cluster_List 最短、Router ID 最小、对端地址最小等）
 
-### 7_6_5 常用属性控制
+#### 7_6_5 常用属性控制
 ```plain
 # 用路由策略设置 Local_Preference
 [H3C] route-policy SET-LP permit node 10
@@ -3206,7 +3207,7 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 [H3C-bgp-default-ipv4] peer 10.1.1.2 preferred-value 100
 ```
 
-### 7_6_6 验证
+#### 7_6_6 验证
 ```plain
 <H3C> display bgp peer                       # 邻居状态（Established 为正常）
 <H3C> display bgp peer verbose
@@ -3217,8 +3218,8 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 
 ---
 
-## 7_7 路由策略与引入控制
-### 7_7_1 工具箱
+### 7_7 路由策略与引入控制
+#### 7_7_1 工具箱
 | 工具 | 作用 |
 | --- | --- |
 | ACL / 前缀列表 | **匹配**路由（抓取感兴趣路由） |
@@ -3228,13 +3229,13 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 | as-path-filter | 按 AS_PATH 过滤 BGP 路由 |
 | community-filter | 按团体属性过滤 |
 
-### 7_7_2 前缀列表（推荐用于路由匹配）
+#### 7_7_2 前缀列表（推荐用于路由匹配）
 ```plain
 [H3C] ip prefix-list PL-1 index 10 permit 192.168.1.0 24
 [H3C] ip prefix-list PL-1 index 20 permit 10.0.0.0 8 greater-equal 16 less-equal 24
 ```
 
-### 7_7_3 route-policy 配置
+#### 7_7_3 route-policy 配置
 ```plain
 [H3C] route-policy RP-OSPF-TO-BGP permit node 10
 [H3C-route-policy-RP-OSPF-TO-BGP-10] if-match ip-prefix PL-1
@@ -3248,7 +3249,7 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 
 > **隐含规则**：route-policy 末尾有**隐含的 deny all**。若只想放行部分路由，需在末尾加一条空 permit 节点放行其余。
 
-### 7_7_4 双向引入与环路防范
+#### 7_7_4 双向引入与环路防范
 ```plain
 # 双点双向引入易产生环路，必须打 tag 防环
 [H3C] route-policy DENY-TAG-100 deny node 10
@@ -3263,7 +3264,7 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 [H3C-bgp-default-ipv4] import-route ospf 1 route-policy SET-TAG-100
 ```
 
-### 📌 案例手记：一条 import-route 引发的"路由黑洞"
+#### 📌 案例手记：一条 import-route 引发的"路由黑洞"
 某企业 OSPF 与 BGP 双向引入，某天新增一台路由器后，部分网段突然不通。
 
 排查：
@@ -3282,8 +3283,8 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 
 ---
 
-## 7_8 IPv6 与 SRv6
-### 7_8_1 IPv6 基础
+### 7_8 IPv6 与 SRv6
+#### 7_8_1 IPv6 基础
 ```plain
 [H3C] interface GigabitEthernet 1/0/1
 [H3C-GigabitEthernet1/0/1] ipv6 address 2001:db8:1::1/64
@@ -3298,7 +3299,7 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 <H3C> ping ipv6 2001:db8:1::2
 ```
 
-### 7_8_2 OSPFv3
+#### 7_8_2 OSPFv3
 ```plain
 [H3C] ospfv3 1
 [H3C-ospfv3-1] router-id 1.1.1.1
@@ -3308,22 +3309,22 @@ Idle → Connect → Active → OpenSent → OpenConfirm → Established
 [H3C-GigabitEthernet1/0/1] ospfv3 1 area 0
 ```
 
-### 7_8_3 IPv6 过渡技术
+#### 7_8_3 IPv6 过渡技术
 | 技术 | 用途 |
 | --- | --- |
 | 双栈 | 同时运行 IPv4/IPv6，最彻底 |
 | 6to4 / ISATAP | 隧道过渡 |
 | NAT64 | IPv6 网络访问 IPv4 资源 |
 
-### 7_8_4 SRv6 概览（IE 拓展）
+#### 7_8_4 SRv6 概览（IE 拓展）
 SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment Routing Header）** 携带路径信息，简化网络协议、支持可编程路径，是新一代承载网方向。
 
 **学习建议**：IE 阶段了解原理与应用场景（业务链、灵活路径、TI-LFA 快速重路由）即可，重点仍在传统 IGP/BGP 的排障能力。
 
 ---
 
-## 7_9 路由排障与验证清单
-### 分层排查思路
+### 7_9 路由排障与验证清单
+#### 分层排查思路
 ```plain
 第1步 接口 UP 吗？        display interface brief
 第2步 IP 配了吗？         display ip interface brief
@@ -3335,7 +3336,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 第8步 有 ACL 拦吗？       display acl all
 ```
 
-### 验证清单
+#### 验证清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | 静态路由生效 | `display ip routing-table` | 路由在表中，下一跳可达 |
@@ -3349,7 +3350,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 | 引入范围受控 | `display ip routing-table protocol bgp` | 只看到规划内的引入路由 |
 | 无路由环路 | `tracert` | 路径无重复跳 |
 
-### 实验笔记模板
+#### 实验笔记模板
 ```plain
 ## 实验：OSPF 多区域 + BGP + 路由引入控制
 日期：____   设备：____
@@ -3377,13 +3378,13 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 - Stub 区域两端配置必须一致
 ```
 
-# 板块8 · 园区网业务承载：DHCP、组播、QoS 与二层防护
+## 板块8 · 园区网业务承载：DHCP、组播、QoS 与二层防护
 > 本板块决定网络"跑得好不好"——能通只是及格线，**稳定、可控、可防私接**才是工程师水平。
 
 ---
 
-## 8_1 DHCP 部署（服务器 / 中继 / 客户端）
-### 8_1_1 三种角色
+### 8_1 DHCP 部署（服务器 / 中继 / 客户端）
+#### 8_1_1 三种角色
 | 角色 | 说明 | 配置位置 |
 | --- | --- | --- |
 | DHCP 服务器 | 分配 IP、掩码、网关、DNS | 三层交换机 / 路由器 / 专用服务器 |
@@ -3392,7 +3393,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 > **重要认知**：二层交换机不能提供 DHCP 服务，但可以提供 DHCP 中继 / 代理功能。三层交换机与路由器可以提供 DHCP 服务。
 
-### ASCII 流程：DHCP 四步交互
+#### ASCII 流程：DHCP 四步交互
 ```plain
   客户端                      服务器
     |  --- DHCP Discover (广播) -->  |
@@ -3404,7 +3405,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
   服务器根据 giaddr 判断该分配哪个地址池
 ```
 
-### 8_1_2 交换机作为 DHCP 服务器（园区网主流）
+#### 8_1_2 交换机作为 DHCP 服务器（园区网主流）
 ```plain
 [H3C] dhcp enable
 
@@ -3428,7 +3429,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 [H3C-dhcp-pool-vlan20] quit
 ```
 
-### 8_1_3 静态绑定（打印机、服务器固定 IP）
+#### 8_1_3 静态绑定（打印机、服务器固定 IP）
 ```plain
 [H3C] dhcp server ip-pool static-1
 [H3C-dhcp-pool-static-1] static-bind ip-address 192.168.10.100 mask 255.255.255.0
@@ -3441,7 +3442,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 > 绑定时 MAC 地址格式为 **xxxx-xxxx-xxxx**（H3C 格式）。
 
-### 8_1_4 DHCP 中继（服务器在核心、终端在接入）
+#### 8_1_4 DHCP 中继（服务器在核心、终端在接入）
 ```plain
 # 汇聚 / 接入交换机上配置中继
 [H3C] dhcp enable
@@ -3459,7 +3460,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 **原理提示**：DHCP 请求是广播（目的 255.255.255.255），无法跨三层。中继把广播转成单播发给服务器，并在报文中插入 **giaddr**（中继代理 IP），服务器据此判断该分配哪个地址池。
 
-### 8_1_5 交换机接口作为 DHCP 客户端
+#### 8_1_5 交换机接口作为 DHCP 客户端
 适用于管理地址需要动态获取的场景（如临时调试、小型网络）：
 
 ```plain
@@ -3473,7 +3474,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 <H3C> undo debugging dhcp-alloc
 ```
 
-### 8_1_6 查看与排错
+#### 8_1_6 查看与排错
 ```plain
 <H3C> display dhcp server ip-in-use                    # 已分配地址
 <H3C> display dhcp server ip-in-use pool VLAN10
@@ -3493,8 +3494,8 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 ---
 
-## 8_2 DHCP Snooping（防私接 DHCP 服务器）
-### 8_2_1 原理
+### 8_2 DHCP Snooping（防私接 DHCP 服务器）
+#### 8_2_1 原理
 私接家用路由器是最常见的网络故障源。DHCP Snooping 通过**端口信任机制**解决：
 
 + **信任端口（Trusted）**：只允许指定端口（上行口）发送 DHCP 服务器响应报文。
@@ -3502,7 +3503,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 同时生成 **DHCP Snooping 绑定表**（IP + MAC + VLAN + 端口），供 IP Source Guard、ARP 检测使用。
 
-### 8_2_2 配置
+#### 8_2_2 配置
 ```plain
 [H3C] dhcp snooping enable                             # 全局开启
 
@@ -3522,20 +3523,20 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 [H3C-vlan10] quit
 ```
 
-### 8_2_3 防 DHCP 饿死攻击（限速）
+#### 8_2_3 防 DHCP 饿死攻击（限速）
 ```plain
 [H3C] interface GigabitEthernet 1/0/1
 [H3C-GigabitEthernet1/0/1] dhcp snooping rate-limit 10      # 每秒最多 10 个 DHCP 报文
 ```
 
-### 8_2_4 查看
+#### 8_2_4 查看
 ```plain
 <H3C> display dhcp snooping
 <H3C> display dhcp snooping binding                    # 绑定表（IP+MAC+VLAN+端口）
 <H3C> display dhcp snooping trust
 ```
 
-### 📌 案例手记：一台家用路由器搅乱整层楼
+#### 📌 案例手记：一台家用路由器搅乱整层楼
 某办公室员工自带无线路由器，把 LAN 口接到了墙上网口（WAN 口空着）。
 
 结果：第二天整个楼层的终端陆续拿到 `192.168.1.x` 的地址（家用路由器网段），网关指向了那台路由器，全部上不了网。
@@ -3556,8 +3557,8 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 ---
 
-## 8_3 IP 组播
-### 8_3_1 组播基础
+### 8_3 IP 组播
+#### 8_3_1 组播基础
 | 概念 | 说明 |
 | --- | --- |
 | 组播地址 | IPv4 D 类：224.0.0.0 ~ 239.255.255.255 |
@@ -3567,7 +3568,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 **应用场景**：视频监控、IPTV、视频会议、金融行情推送。
 
-### 8_3_2 IGMP Snooping（二层组播，园区网必配）
+#### 8_3_2 IGMP Snooping（二层组播，园区网必配）
 **作用**：让二层交换机只把组播流量转发给"真正需要"的端口，而不是全网泛洪。
 
 ```plain
@@ -3591,7 +3592,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 <H3C> display igmp-snooping group vlan 10
 ```
 
-### 8_3_3 三层组播（PIM）
+#### 8_3_3 三层组播（PIM）
 | 模式 | 适用场景 |
 | --- | --- |
 | PIM-DM（密集模式） | 组成员密集，先泛洪后剪枝 |
@@ -3613,7 +3614,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 **验证**：`display pim neighbor`、`display pim routing-table`、`display igmp group`。
 
-### ASCII 示意：IGMP Snooping 的作用
+#### ASCII 示意：IGMP Snooping 的作用
 ```plain
    未开启 Snooping：                   开启 Snooping 后：
    组播源 → 交换机 → 泛洪到所有口       组播源 → 交换机 → 只发给
@@ -3624,22 +3625,22 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 ---
 
-## 8_4 QoS 与 MQC
-### 8_4_1 QoS 三种服务模型
+### 8_4 QoS 与 MQC
+#### 8_4_1 QoS 三种服务模型
 | 模型 | 说明 | 适用场景 |
 | --- | --- | --- |
 | Best-Effort | 尽力而为，无保障 | 默认 |
 | IntServ | 预留资源（RSVP） | 规模小、要求高 |
 | DiffServ | **差分服务，按优先级处理（主流）** | 园区网、运营商 |
 
-### 8_4_2 MQC 三要素（配置套路固定）
+#### 8_4_2 MQC 三要素（配置套路固定）
 ```plain
 流分类（traffic classifier）：定义"什么是重要流量"
 流行为（traffic behavior）  ：定义"重要流量怎么对待"
 流策略（traffic policy）    ：把分类与行为绑定，并应用到接口
 ```
 
-### 8_4_3 配置示例：保障语音与视频会议
+#### 8_4_3 配置示例：保障语音与视频会议
 ```plain
 # 1. 流分类
 [H3C] traffic classifier VOIP
@@ -3670,7 +3671,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 [H3C-GigabitEthernet1/0/24] traffic-policy QOS-POLICY outbound
 ```
 
-### 8_4_4 信任与标记
+#### 8_4_4 信任与标记
 ```plain
 # 信任端口的 DSCP / 802.1p
 [H3C-GigabitEthernet1/0/1] qos trust dscp
@@ -3681,7 +3682,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 [H3C-behavior-REMARK] remark dscp ef
 ```
 
-### 8_4_5 限速与流量监管
+#### 8_4_5 限速与流量监管
 ```plain
 # 端口限速（出方向 10M）
 [H3C-GigabitEthernet1/0/1] qos lr outbound cir 10000
@@ -3691,7 +3692,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 [H3C-behavior-POLICE] car cir 2000 cbs 200000 ebs 0 green pass red discard
 ```
 
-### 8_4_6 验证
+#### 8_4_6 验证
 ```plain
 <H3C> display traffic classifier user-defined
 <H3C> display traffic behavior user-defined
@@ -3702,15 +3703,15 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 ---
 
-## 8_5 二层防护（接入层纵深防御）
-### 8_5_1 端口隔离
+### 8_5 二层防护（接入层纵深防御）
+#### 8_5_1 端口隔离
 ```plain
 [H3C] port-isolate group 1
 [H3C] interface range g1/0/1 to g1/0/24
 [H3C-if-range] port-isolate enable group 1
 ```
 
-### 8_5_2 IP Source Guard（防私设 IP）
+#### 8_5_2 IP Source Guard（防私设 IP）
 基于 DHCP Snooping 绑定表，只允许报文的源 IP 与绑定表一致。
 
 ```plain
@@ -3727,7 +3728,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 **验证**：`display ip source binding`、`display dhcp snooping binding`。
 
-### 8_5_3 动态 ARP 检测（DAI，防 ARP 欺骗）
+#### 8_5_3 动态 ARP 检测（DAI，防 ARP 欺骗）
 ```plain
 [H3C] vlan 10
 [H3C-vlan10] arp detection enable
@@ -3738,20 +3739,20 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 [H3C-GigabitEthernet1/0/48] arp detection trust
 ```
 
-### 8_5_4 MAC 地址数限制
+#### 8_5_4 MAC 地址数限制
 ```plain
 [H3C-GigabitEthernet1/0/1] mac-address max-mac-count 2
 [H3C-GigabitEthernet1/0/1] mac-address max-mac-count 2 action discard
 ```
 
-### 8_5_5 风暴抑制（已在板块3 出现，此处补全策略视角）
+#### 8_5_5 风暴抑制（已在板块3 出现，此处补全策略视角）
 ```plain
 [H3C-GigabitEthernet1/0/1] broadcast-suppression pps 100
 [H3C-GigabitEthernet1/0/1] multicast-suppression 20
 [H3C-GigabitEthernet1/0/1] unicast-suppression 20
 ```
 
-### 二层防护能力对照表
+#### 二层防护能力对照表
 | 威胁 | 防护技术 |
 | --- | --- |
 | 私接 DHCP 服务器 | DHCP Snooping（上行口 trust） |
@@ -3763,7 +3764,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 | DHCP 饿死攻击 | DHCP Snooping rate-limit |
 | 环路 | STP + BPDU 保护 + 环路检测 |
 
-### 📌 案例手记：ARP 欺骗导致的"时断时续"
+#### 📌 案例手记：ARP 欺骗导致的"时断时续"
 现象：某部门每隔十几分钟就断网一次，几十秒后自动恢复，ARP 表里网关的 MAC 会变化。
 
 排查：
@@ -3782,8 +3783,8 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 
 ---
 
-## 8_6 实验笔记模板与验收清单
-### 笔记模板
+### 8_6 实验笔记模板与验收清单
+#### 笔记模板
 ```plain
 ## 实验：DHCP + Snooping + QoS 全套部署
 日期：____   设备：____
@@ -3811,7 +3812,7 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 - QoS 策略应用方向：靠近源做标记，靠近拥塞点做调度
 ```
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | DHCP 服务正常 | `display dhcp server ip-in-use` | 终端拿到正确网段地址 |
@@ -3823,13 +3824,13 @@ SRv6（Segment Routing over IPv6）基于源路由思想，用 **SRH（Segment R
 | QoS 命中 | `display qos policy interface` | 分类有匹配计数 |
 | 端口隔离生效 | 同 VLAN 互 ping | 不通，但都能通网关 |
 
-# 板块9 · 广域网接入、ACL、NAT 与 VPN 技术
+## 板块9 · 广域网接入、ACL、NAT 与 VPN 技术
 > 本板块覆盖 H3CNE 的 ACL / NAT 要求与 H3CSE-RS-NSO（GB0-392）的主体内容：宽带接入、VPN、QoS、VXLAN/EVPN。
 
 ---
 
-## 9_1 广域网接入技术
-### 9_1_1 PPP 与 PPPoE
+### 9_1 广域网接入技术
+#### 9_1_1 PPP 与 PPPoE
 PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证（PAP/CHAP）、协商 IP、链路质量检测。
 
 ```plain
@@ -3877,14 +3878,14 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 <H3C> display pppoe-client session summary
 ```
 
-### 9_1_2 常见宽带接入对比
+#### 9_1_2 常见宽带接入对比
 | 技术 | 介质 | 典型带宽 | 场景 |
 | --- | --- | --- | --- |
 | PPPoE | 以太网 / 光纤 | 100M ~ 1G | 家庭宽带、企业拨号 |
 | 专线（MSTP / OTN） | 光纤 | 2M ~ 10G | 企业总部互联 |
 | SD-WAN | 任意叠加 | 灵活 | 多分支组网（H3CSE-SDN 方向） |
 
-### 9_1_3 MTU 与 MSS 调整（出口必配）
+#### 9_1_3 MTU 与 MSS 调整（出口必配）
 隧道或 PPPoE 封装会占用额外字节，导致大包不通：
 
 ```plain
@@ -3897,8 +3898,8 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 
 ---
 
-## 9_2 ACL（访问控制列表）
-### 9_2_1 ACL 类型
+### 9_2 ACL（访问控制列表）
+#### 9_2_1 ACL 类型
 | 类型 | 编号范围 | 匹配能力 |
 | --- | --- | --- |
 | 基本 ACL | 2000 ~ 2999 | 仅源 IP |
@@ -3906,7 +3907,7 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 | 二层 ACL | 4000 ~ 4999 | 源 / 目的 MAC、VLAN、802.1p |
 | 用户自定义 ACL | 5000 ~ 5999 | 报文偏移量匹配 |
 
-### 9_2_2 通配符掩码（wildcard mask）
+#### 9_2_2 通配符掩码（wildcard mask）
 与子网掩码相反：**0 表示必须精确匹配，1 表示不关心**。
 
 | 需求 | 通配符 |
@@ -3918,7 +3919,7 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 | 匹配 192.168.1.0/24 中的**奇数**地址 | `0.0.0.254` |
 | 匹配 192.168.1.0/24 中的**偶数**地址 | `0.0.0.254`（配合基地址 192.168.1.0） |
 
-### 9_2_3 基本 ACL 配置（控制管理访问）
+#### 9_2_3 基本 ACL 配置（控制管理访问）
 ```plain
 # 仅允许运维网段管理设备
 [H3C] acl basic 2000
@@ -3931,7 +3932,7 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 [H3C-ui-vty0-4] acl 2000 inbound
 ```
 
-### 9_2_4 高级 ACL 配置（控制业务流量）
+#### 9_2_4 高级 ACL 配置（控制业务流量）
 ```plain
 # 禁止视频监控网段访问办公网
 [H3C] acl advanced 3000
@@ -3953,7 +3954,7 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 [H3C-acl-ipv4-adv-3001] quit
 ```
 
-### 9_2_5 ACL 调用方式与方向
+#### 9_2_5 ACL 调用方式与方向
 | 调用位置 | 命令 | 方向说明 |
 | --- | --- | --- |
 | 接口 | `packet-filter 3000 inbound/outbound` | inbound = 进入接口，outbound = 离开接口 |
@@ -3964,7 +3965,7 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 
 **方向判断口诀**：**以设备为中心**——从外部进入设备接口为 inbound，从设备接口发出为 outbound。
 
-### 9_2_6 查看与排错
+#### 9_2_6 查看与排错
 ```plain
 <H3C> display acl all
 <H3C> display acl 3000
@@ -3975,7 +3976,7 @@ PPP（Point-to-Point Protocol）是串行链路上的二层协议，支持认证
 > **重要**：H3C ACL **默认规则为允许**（未被任何 rule 匹配的报文默认放行）。因此"只允许某网段"必须**显式写 **`rule deny`。  
 ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配置顺序自动分配 5 的步长（0、5、10、15 依次递增）。
 
-### 📌 案例手记：一条 ACL 放倒整栋楼
+#### 📌 案例手记：一条 ACL 放倒整栋楼
 **背景**：某公司要求"只有办公网段 `192.168.10.0/24` 能访问服务器网段 `192.168.100.0/24`，其余网段一律禁止"。
 
 工程师在核心交换机上写了 ACL，并挂在了**连接出口路由器的上行口出方向**：
@@ -4029,15 +4030,15 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 
 ---
 
-## 9_3 NAT（地址转换）
-### 9_3_1 三种 NAT 类型
+### 9_3 NAT（地址转换）
+#### 9_3_1 三种 NAT 类型
 | 类型 | 特点 | 应用 |
 | --- | --- | --- |
 | Easy IP（PAT） | 多对一，出接口 IP 做转换，复用端口 | 企业上网（最常用） |
 | NAPT | 多对多，用地址池 | 有一定公网地址时 |
 | NAT Server | 静态映射，外网访问内网服务器 | 发布 Web / 邮件服务 |
 
-### 9_3_2 Easy IP（出向 NAT）
+#### 9_3_2 Easy IP（出向 NAT）
 ```plain
 # 1. 用 ACL 匹配需要转换的内网流量
 [H3C] acl basic 2000
@@ -4052,7 +4053,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 [H3C] ip route-static 0.0.0.0 0.0.0.0 211.x.x.1
 ```
 
-### 9_3_3 NAPT（地址池）
+#### 9_3_3 NAPT（地址池）
 ```plain
 [H3C] nat address-group 1
 [H3C-address-group-1] address 211.x.x.10 211.x.x.20
@@ -4062,7 +4063,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 [H3C-GigabitEthernet0/1] nat outbound 2000 address-group 1
 ```
 
-### 9_3_4 NAT Server（发布内网服务器）
+#### 9_3_4 NAT Server（发布内网服务器）
 ```plain
 # 把公网 211.x.x.100 的 80 端口映射到内网 192.168.100.10 的 80 端口
 [H3C] interface GigabitEthernet 0/1
@@ -4072,7 +4073,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 [H3C-GigabitEthernet0/1] nat server protocol tcp global 211.x.x.100 8080 inside 192.168.100.10 80
 ```
 
-### 9_3_5 NAT ALG 与常见问题
+#### 9_3_5 NAT ALG 与常见问题
 | 问题 | 原因 | 处理 |
 | --- | --- | --- |
 | FTP 能连但传不了数据 | FTP 是多通道协议 | 开启 NAT ALG：`nat alg ftp` |
@@ -4087,7 +4088,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 [H3C-GigabitEthernet0/1] nat hairpin enable
 ```
 
-### 9_3_6 验证
+#### 9_3_6 验证
 ```plain
 <H3C> display nat session                      # 当前 NAT 会话
 <H3C> display nat session verbose
@@ -4099,8 +4100,8 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 
 ---
 
-## 9_4 VPN 技术（GRE / IPSec / L2TP）
-### 9_4_1 GRE（通用路由封装）
+### 9_4 VPN 技术（GRE / IPSec / L2TP）
+#### 9_4_1 GRE（通用路由封装）
 **特点**：简单、无加密，用于在隧道中运行路由协议或承载组播。
 
 ```plain
@@ -4121,7 +4122,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 
 > **注意**：GRE 无加密，敏感业务必须叠加 IPSec。
 
-### 9_4_2 IPSec（加密隧道，主流）
+#### 9_4_2 IPSec（加密隧道，主流）
 **核心组件**：
 
 | 组件 | 作用 |
@@ -4198,7 +4199,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 | NAT 穿越问题 | 配置 `nat traversal`（两端） |
 | 路由不通 | `ping` 对端公网地址 |
 
-### 9_4_3 L2TP（远程拨号 VPN）
+#### 9_4_3 L2TP（远程拨号 VPN）
 常用于移动办公用户拨入企业内网。
 
 ```plain
@@ -4219,7 +4220,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 [H3C] ip pool 1 192.168.200.2 192.168.200.100
 ```
 
-### 9_4_4 SSL VPN 与选型
+#### 9_4_4 SSL VPN 与选型
 | 技术 | 场景 | 特点 |
 | --- | --- | --- |
 | IPSec | 站点到站点（分支互联） | 稳定，需客户端/设备 |
@@ -4229,8 +4230,8 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 
 ---
 
-## 9_5 MPLS VPN 与 VXLAN / EVPN
-### 9_5_1 MPLS VPN 基础概念
+### 9_5 MPLS VPN 与 VXLAN / EVPN
+#### 9_5_1 MPLS VPN 基础概念
 | 概念 | 说明 |
 | --- | --- |
 | CE | 用户边缘设备 |
@@ -4259,7 +4260,7 @@ ACL 按 rule 编号**从小到大匹配，命中即停止**；无编号时按配
 
 **验证**：`display ip vpn-instance`、`display bgp vpnv4 all routing-table`、`display mpls lsp`。
 
-### 9_5_2 VXLAN / EVPN（数据中心主流）
+#### 9_5_2 VXLAN / EVPN（数据中心主流）
 VXLAN 在三层网络之上构建二层overlay，解决：
 
 + 传统 VLAN 4094 数量限制（VXLAN 有 1600 万个 VNI）。
@@ -4290,8 +4291,8 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 
 ---
 
-## 9_6 出口方案设计与验证清单
-### 出口方案决策表
+### 9_6 出口方案设计与验证清单
+#### 出口方案决策表
 | 场景 | 方案 |
 | --- | --- |
 | 单条宽带，简单上网 | Easy IP + 默认路由 |
@@ -4301,7 +4302,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 | 发布内网服务 | NAT Server + 安全策略 + ACL 限制源 |
 | 移动办公 | SSL VPN / L2TP over IPSec |
 
-### 策略路由示例（按源网段分流）
+#### 策略路由示例（按源网段分流）
 ```plain
 [H3C] acl basic 2001
 [H3C-acl-ipv4-basic-2001] rule 5 permit source 192.168.10.0 0.0.0.255
@@ -4316,7 +4317,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 [H3C-Vlan-interface10] ip policy-based-route PBR1
 ```
 
-### 验证清单
+#### 验证清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | NAT 生效 | `display nat session` | 内网地址已转换为出接口地址 |
@@ -4328,7 +4329,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 | 出口切换正常 | 断开主链路 | 业务中断时间符合预期 |
 | MSS 调整 | 大包测试 | 无分片导致的访问异常 |
 
-### 实验笔记模板
+#### 实验笔记模板
 ```plain
 ## 实验：出口 NAT + IPSec 分支互联
 日期：____   设备：____
@@ -4357,13 +4358,13 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 - NAT 与 IPSec 同时存在时注意 NAT 穿越与 ACL 排除
 ```
 
-# 板块10 · 等保 2.0 合规安全加固（交换机篇）
+## 板块10 · 等保 2.0 合规安全加固（交换机篇）
 > 本板块按等保 2.0 的**测评项 → 配置实现 → 验证命令**三段式组织，可直接用于项目交付与测评整改。  
 等保测评中，网络设备属于"安全区域边界"与"安全计算环境"两类控制点。
 
 ---
 
-## 10_1 等保 2.0 对网络设备的核心要求
+### 10_1 等保 2.0 对网络设备的核心要求
 | 控制点 | 等保要求 | 对应章节 |
 | --- | --- | --- |
 | 身份鉴别 | 应对登录用户进行身份标识和鉴别，身份标识具有唯一性，身份鉴别信息具有复杂度要求并定期更换 | 10_3、10_4 |
@@ -4374,7 +4375,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 | 恶意代码防范 | 应安装防恶意代码软件或配置相应策略 | 10_7（端口安全） |
 | 可信验证 | （三级以上）可基于可信根对设备进行可信验证 | 视设备支持 |
 
-### 等保三级对网络设备的硬性指标（测评时逐条核对）
+#### 等保三级对网络设备的硬性指标（测评时逐条核对）
 | 指标 | 要求 |
 | --- | --- |
 | 口令长度 | ≥ 8 位 |
@@ -4387,7 +4388,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 
 ---
 
-## 10_2 设备基础信息配置
+### 10_2 设备基础信息配置
 ```plain
 <H3C> system-view
 [H3C] sysname Core-Switch-01                            # 设备命名，唯一且可识别
@@ -4397,7 +4398,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 [H3C-Vlan-interface1] quit
 ```
 
-### 查看命令速查（开局与测评都用）
+#### 查看命令速查（开局与测评都用）
 ```plain
 <H3C> display current-configuration                     # 当前运行配置（简写 dis cu）
 <H3C> display saved-configuration                       # 已保存配置
@@ -4408,7 +4409,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 <H3C> display interface brief | include ADM             # 只看被手工关闭的端口
 ```
 
-### Link 状态三态（测评与巡检必看）
+#### Link 状态三态（测评与巡检必看）
 | 状态 | 含义 | 处理 |
 | --- | --- | --- |
 | UP | 接口正常连通 | — |
@@ -4417,8 +4418,8 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 
 ---
 
-## 10_3 身份鉴别与口令安全（等保核心）
-### 10_3_1 全局密码策略
+### 10_3 身份鉴别与口令安全（等保核心）
+#### 10_3_1 全局密码策略
 ```plain
 [H3C] password-control enable                           # 开启密码管理功能
 [H3C] password-control aging enable                     # 开启密码有效期
@@ -4433,7 +4434,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 
 **四种字符类型**：大写字母、小写字母、数字、特殊字符。
 
-### 10_3_2 单用户密码策略（优先级高于全局）
+#### 10_3_2 单用户密码策略（优先级高于全局）
 ```plain
 [H3C] local-user sysadmin class manage
 [H3C-luser-manage-sysadmin] password-control aging 60
@@ -4442,7 +4443,7 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 
 > 规则：**用户视图下配置了密码策略，则该用户的策略优先生效**；未配置则继承全局策略。
 
-### 10_3_3 查看与验证
+#### 10_3_3 查看与验证
 ```plain
 <H3C> display password-control                          # 全局策略
 <H3C> display password-control super                    # 超级密码策略
@@ -4454,10 +4455,10 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 
 ---
 
-## 10_4 三权分立账号体系
+### 10_4 三权分立账号体系
 等保 2.0 要求**系统管理员、安全管理员、审计管理员三权分立**，权限互相隔离。
 
-### 10_4_1 创建三权账号
+#### 10_4_1 创建三权账号
 ```plain
 # 系统管理员（配置与维护）
 [H3C] local-user sysadmin class manage
@@ -4481,13 +4482,13 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 [H3C-luser-manage-auditadmin] quit
 ```
 
-### 10_4_2 删除默认账户（等保硬性要求）
+#### 10_4_2 删除默认账户（等保硬性要求）
 ```plain
 [H3C] undo local-user admin                             # 删除默认 admin 账户
 [H3C] display local-user                                # 确认所有账户均为实名账户
 ```
 
-### 10_4_3 三权角色说明
+#### 10_4_3 三权角色说明
 | 角色 | 用户名 | 权限级别 | 职责 |
 | --- | --- | --- | --- |
 | 系统管理员 | sysadmin | level-15（network-admin） | 设备配置、系统维护、网络管理 |
@@ -4498,10 +4499,10 @@ VXLAN 在三层网络之上构建二层overlay，解决：
 
 ---
 
-## 10_5 SSH 安全远程管理（禁用 Telnet）
+### 10_5 SSH 安全远程管理（禁用 Telnet）
 等保明确要求：**远程管理必须加密，禁用 Telnet 等明文协议**。
 
-### 10_5_1 完整配置
+#### 10_5_1 完整配置
 ```plain
 # 1. 生成本地密钥对（SSH 前置条件）
 [H3C] public-key local create rsa
@@ -4535,7 +4536,7 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 [H3C] save force
 ```
 
-### 10_5_2 验证
+#### 10_5_2 验证
 ```plain
 <H3C> display ssh server status
 <H3C> display telnet server status                      # 应为 disabled
@@ -4545,8 +4546,8 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 
 ---
 
-## 10_6 SNMPv3 与日志外送
-### 10_6_1 SNMPv3（加密 + 认证）
+### 10_6 SNMPv3 与日志外送
+#### 10_6_1 SNMPv3（加密 + 认证）
 ```plain
 [H3C] snmp-agent
 [H3C] snmp-agent sys-info version v3                    # 只用 v3，禁用 v1/v2c
@@ -4557,7 +4558,7 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 
 > **等保要求**：SNMP 团体名不能是默认的 public/private；v1/v2c 明文传输，应禁用或改为 v3。
 
-### 10_6_2 日志外送（syslog）
+#### 10_6_2 日志外送（syslog）
 ```plain
 [H3C] info-center enable
 [H3C] info-center loghost 192.168.100.50 facility local5
@@ -4574,8 +4575,8 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 
 ---
 
-## 10_7 端口安全与边界防护
-### 10_7_1 关闭闲置端口
+### 10_7 端口安全与边界防护
+#### 10_7_1 关闭闲置端口
 ```plain
 [H3C] interface range g1/0/25 to g1/0/48
 [H3C-if-range] description UNUSED-SHUTDOWN
@@ -4584,14 +4585,14 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 [H3C-if-range] quit
 ```
 
-### 10_7_2 端口安全（防私接）
+#### 10_7_2 端口安全（防私接）
 ```plain
 [H3C-GigabitEthernet1/0/1] port-security enable
 [H3C-GigabitEthernet1/0/1] port-security max-mac-count 1
 [H3C-GigabitEthernet1/0/1] port-security intrusion-mode disableport
 ```
 
-### 10_7_3 二层防护全套（与板块8 呼应）
+#### 10_7_3 二层防护全套（与板块8 呼应）
 ```plain
 [H3C] dhcp snooping enable
 [H3C] vlan 10
@@ -4601,7 +4602,7 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 [H3C-vlan10] quit
 ```
 
-### 10_7_4 业务口移出 VLAN 1
+#### 10_7_4 业务口移出 VLAN 1
 ```plain
 [H3C] interface range g1/0/1 to g1/0/24
 [H3C-if-range] port access vlan 10                      # 业务口全部划入业务 VLAN
@@ -4613,7 +4614,7 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 
 ---
 
-## 10_8 关闭高危服务与端口
+### 10_8 关闭高危服务与端口
 ```plain
 [H3C] undo telnet server enable                         # 关闭 Telnet
 [H3C] undo ip http enable                               # 关闭 HTTP（保留 HTTPS）
@@ -4635,7 +4636,7 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 
 ---
 
-## 10_9 安全审计配置
+### 10_9 安全审计配置
 ```plain
 [H3C] info-center enable
 [H3C] info-center loghost 192.168.100.50
@@ -4659,8 +4660,8 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 
 ---
 
-## 10_10 自检清单与整改报告模板
-### 自检清单（测评前逐项打勾）
+### 10_10 自检清单与整改报告模板
+#### 自检清单（测评前逐项打勾）
 | 序号 | 检查项 | 检查命令 | 达标标准 |
 | --- | --- | --- | --- |
 | 1 | 设备命名唯一 | `display current-configuration | include sysname` | 命名唯一可识别 |
@@ -4683,7 +4684,7 @@ Input the modulus length [default = 1024]: 2048         # 建议 2048，1024 已
 | 18 | 二层防护开启 | `display dhcp snooping` | Snooping 已启用 |
 | 19 | 密码密文存储 | `display current-configuration | include password` | cipher 形式 |
 
-### 整改报告模板（交付用）
+#### 整改报告模板（交付用）
 ```plain
 ## 网络设备等保合规整改报告
 
@@ -4708,7 +4709,7 @@ GB/T 22239-2019 信息安全技术 网络安全等级保护基本要求（相应
 - 设备台账
 ```
 
-### 📌 案例手记：一次测评整改的"翻车"与补救
+#### 📌 案例手记：一次测评整改的"翻车"与补救
 某单位等保三级测评，网络设备的整改项有 12 条。工程师连夜改完，第二天复测仍有 5 条不通过。
 
 复盘发现的问题：
@@ -4726,7 +4727,7 @@ GB/T 22239-2019 信息安全技术 网络安全等级保护基本要求（相应
 
 ---
 
-## 10_11 实验笔记模板
+### 10_11 实验笔记模板
 ```plain
 ## 实验：等保 2.0 交换机加固全流程
 日期：____   设备：____
@@ -4754,7 +4755,7 @@ GB/T 22239-2019 信息安全技术 网络安全等级保护基本要求（相应
 - 所有整改动作需留证据（配置 + 输出 + 截图）
 ```
 
-### 本板块能力验收
+#### 本板块能力验收
 逐项自检请对照 **10_10 的 19 项自检清单**。三个层级的达标标准如下：
 
 | 层级 | 达标标准 |
@@ -4763,17 +4764,17 @@ GB/T 22239-2019 信息安全技术 网络安全等级保护基本要求（相应
 | SE | 能在不影响业务的前提下完成整改，对 19 项逐条给出配置证据与 `display` 输出 |
 | IE | 能输出一份测评整改报告，说清每项的风险等级、整改依据、遗留问题与回退方案 |
 
-# 板块11 · SecPath 防火墙：安全域、策略与远程管理（含排障实录）
+## 板块11 · SecPath 防火墙：安全域、策略与远程管理（含排障实录）
 > 本板块把一次真实的现场调试过程拆解为"场景 → 配置 → 报错 → 定位 → 解决"的完整链路，并补充现代 V7 防火墙的配置对照。  
 覆盖 H3CNE-Security → H3CSE-Security（GB0-530 构建安全网络架构）→ H3CIE-Security 的能力进阶。
 
 ---
 
-## 11_1 场景说明与组网拓扑
-### 11_1_1 典型场景
+### 11_1 场景说明与组网拓扑
+#### 11_1_1 典型场景
 防火墙在机房，现场配置不便，目标是：先调测到可以通过核心交换机下面的一台跳板机访问，再远程调试。
 
-### ASCII 拓扑
+#### ASCII 拓扑
 ```plain
         [外网]
            |  第1步
@@ -4789,7 +4790,7 @@ GB/T 22239-2019 信息安全技术 网络安全等级保护基本要求（相应
 
 **说明**：防火墙 GE0/0 口 IP 为 192.168.10.31/24，与核心交换机 192.168.10.254/24 三层互联。
 
-### 11_1_2 版本差异提示（重要）
+#### 11_1_2 版本差异提示（重要）
 V5 设备（如 F1000-S 运行 Comware Version 5.20）的命令体系与 V7 有显著差异：
 
 | 功能 | V5（老设备） | V7（现行标准） |
@@ -4803,21 +4804,21 @@ V5 设备（如 F1000-S 运行 Comware Version 5.20）的命令体系与 V7 有�
 
 ---
 
-## 11_2 配置过程：从零到可远程管理
-### 第一步：开启远程管理服务
+### 11_2 配置过程：从零到可远程管理
+#### 第一步：开启远程管理服务
 ```plain
 <H3C> sys
 [H3C] telnet server enable            # V5 场景；V7 建议直接配 SSH
 ```
 
-### 第二步：配置 VTY 线路与认证方式
+#### 第二步：配置 VTY 线路与认证方式
 ```plain
 [H3C] user-interface vty 0 4
 [H3C-ui-vty0-4] authentication-mode scheme     # 用户名 + 密码认证
 [H3C-ui-vty0-4] quit
 ```
 
-### 第三步：创建访问用户
+#### 第三步：创建访问用户
 ```plain
 [H3C] local-user admin                                  # V5 写法；V7 为 local-user admin class manage
 [H3C-luser-admin] password simple your_password
@@ -4828,7 +4829,7 @@ V5 设备（如 F1000-S 运行 Comware Version 5.20）的命令体系与 V7 有�
 
 **关键提醒**：`service-type` 必须与登录方式匹配。若该用户还能登录 Web，则需 `service-type web`；若只用 SSH，则必须改为 `service-type ssh`。
 
-### 第四步：配置安全域（现场遇到报错）
+#### 第四步：配置安全域（现场遇到报错）
 ```plain
 [H3C] zone name trust
 [H3C-zone-trust] import interface GigabitEthernet 0/0
@@ -4842,7 +4843,7 @@ Error: The interface has been added to another zone.     # 报错
 [H3C] display security-zone                              # 查看接口当前所属域
 ```
 
-### 第五步：配置管理端口 IP
+#### 第五步：配置管理端口 IP
 ```plain
 [H3C] interface GigabitEthernet 0/0
 [H3C-GigabitEthernet0/0] dis this
@@ -4859,7 +4860,7 @@ return
 
 > `port link-mode route` 是防火墙接口的核心属性：防火墙接口**默认是三层路由模式**（可直接配 IP），与交换机的二层模式不同。若接口是 bridge 模式，则不能配 IP。
 
-### 第六步：确认链路正常
+#### 第六步：确认链路正常
 配置完成后防火墙端口提示 UP：
 
 ```plain
@@ -4888,7 +4889,7 @@ round-trip min/avg/max = 1/1/1 ms
 **现场经验**：这一步在案例中是"去核心交换机上检查互联端口发现被 shutdown 了，取消 shutdown 后防火墙端口才 UP"。  
 **防火墙端口 UP 但 ping 不通对端，先查对端端口是否被 shutdown**——这是跨厂商对接最常见的低级故障。
 
-### 📌 案例手记：跨厂商对接，"灯亮着却不通信"
+#### 📌 案例手记：跨厂商对接，"灯亮着却不通信"
 现场 H3C 防火墙与另一厂商核心交换机对接，防火墙端口配置完毕，指示灯正常亮起，但 ping 不通核心。
 
 排查链条：
@@ -4911,11 +4912,11 @@ round-trip min/avg/max = 1/1/1 ms
 
 ---
 
-## 11_3 安全域（Security Zone）原理
-### 11_3_1 什么是安全域
+### 11_3 安全域（Security Zone）原理
+#### 11_3_1 什么是安全域
 安全域是防火墙的核心概念：**接口必须加入某个安全域，域与域之间的流量默认不通，必须由安全策略显式放行**。
 
-### 默认安全域（V5）
+#### 默认安全域（V5）
 | 安全域 | ID | 优先级 | 用途 |
 | --- | --- | --- | --- |
 | Management | 0 | 100 | 设备管理 |
@@ -4924,7 +4925,7 @@ round-trip min/avg/max = 1/1/1 ms
 | DMZ | 3 | 50 | 服务器区 |
 | Untrust | 4 | 5 | 外网不可信区域 |
 
-### 11_3_2 配置命令
+#### 11_3_2 配置命令
 ```plain
 # V5 写法
 [H3C] zone name trust                                   # 创建 / 进入安全域
@@ -4939,7 +4940,7 @@ round-trip min/avg/max = 1/1/1 ms
 [H3C-security-zone-Trust] quit
 ```
 
-### ASCII：安全域与流量方向
+#### ASCII：安全域与流量方向
 ```plain
    Untrust (优先级 5)          DMZ (50)           Trust (85)
    [外网接口]                 [服务器接口]        [内网接口]
@@ -4953,8 +4954,8 @@ round-trip min/avg/max = 1/1/1 ms
 
 ---
 
-## 11_4 安全策略（核心）
-### 11_4_1 V5 域间策略
+### 11_4 安全策略（核心）
+#### 11_4_1 V5 域间策略
 ```plain
 [H3C] interzone source trust destination untrust
 [H3C-interzone-trust-untrust] policy 1
@@ -4965,7 +4966,7 @@ round-trip min/avg/max = 1/1/1 ms
 [H3C-interzone-trust-untrust-policy-1] quit
 ```
 
-### 11_4_2 V7 安全策略（推荐写法）
+#### 11_4_2 V7 安全策略（推荐写法）
 ```plain
 [H3C] security-policy ip
 [H3C-security-policy-ip] rule 5 name Permit_Trust_to_Internet
@@ -4984,7 +4985,7 @@ round-trip min/avg/max = 1/1/1 ms
 [H3C-security-policy-ip-10-Permit_SSH_to_Local] quit
 ```
 
-### 11_4_3 策略设计原则
+#### 11_4_3 策略设计原则
 | 原则 | 说明 |
 | --- | --- |
 | 最小权限 | 只放行业务必需的源、目的、服务 |
@@ -4992,7 +4993,7 @@ round-trip min/avg/max = 1/1/1 ms
 | 默认拒绝 | 末尾配置 `action drop` 的兜底规则（V7 默认即拒绝） |
 | 命名规范 | 用 `动作_源域_目的域_业务` 的可读命名 |
 
-### 11_4_4 验证（最重要）
+#### 11_4_4 验证（最重要）
 ```plain
 <H3C> display security-policy ip                        # 策略列表
 <H3C> display security-policy ip rule 5                 # 单条策略
@@ -5006,8 +5007,8 @@ round-trip min/avg/max = 1/1/1 ms
 
 ---
 
-## 11_5 NAT 与服务器发布
-### 11_5_1 出向 NAT（内网访问外网）
+### 11_5 NAT 与服务器发布
+#### 11_5_1 出向 NAT（内网访问外网）
 ```plain
 # V7
 [H3C] nat global-policy
@@ -5025,7 +5026,7 @@ round-trip min/avg/max = 1/1/1 ms
 [H3C-GigabitEthernet1/0/2] nat outbound
 ```
 
-### 11_5_2 NAT Server（发布内网服务器）
+#### 11_5_2 NAT Server（发布内网服务器）
 ```plain
 # V7
 [H3C] nat global-policy
@@ -5038,7 +5039,7 @@ round-trip min/avg/max = 1/1/1 ms
 
 **配套**：发布服务还需在安全策略中放行 Untrust → DMZ（或 Trust）的对应服务，否则只有 NAT 没有策略，流量仍被丢弃。
 
-### 11_5_3 验证
+#### 11_5_3 验证
 ```plain
 <H3C> display nat session
 <H3C> display nat global-policy
@@ -5047,7 +5048,7 @@ round-trip min/avg/max = 1/1/1 ms
 
 ---
 
-## 11_6 RBM 双机热备
+### 11_6 RBM 双机热备
 RBM（Remote Backup Management）实现防火墙双机热备，主设备故障时备设备接管会话与配置。
 
 ```plain
@@ -5068,8 +5069,8 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 ---
 
-## 11_7 防火墙排障实录与验证清单
-### 排障六步法（防火墙专用）
+### 11_7 防火墙排障实录与验证清单
+#### 排障六步法（防火墙专用）
 ```plain
 第1步 接口 UP 吗？        display interface brief
 第2步 接口在哪个域？      display security-zone
@@ -5079,7 +5080,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 第6步 有会话吗？          display session table
 ```
 
-### 典型故障对照表
+#### 典型故障对照表
 | 现象 | 可能原因 | 定位命令 |
 | --- | --- | --- |
 | 内网不能上网 | 无出向策略 / 无 NAT / 无回程路由 | `display security-policy statistics`、`display nat session` |
@@ -5089,7 +5090,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 | 部分网站打不开 | MTU/MSS 问题 | 调整 `tcp mss 1452` |
 | 双机切换异常 | RBM 数据通道不通 | `display remote-backup status` |
 
-### 📌 案例手记：策略"看着对"却不生效
+#### 📌 案例手记：策略"看着对"却不生效
 客户内网新增一个网段，工程师按已有策略复制了一条新规则，但新网段依然不能上网。
 
 排查：
@@ -5101,7 +5102,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 **方法论沉淀**：**防火墙排障先看命中计数。** 计数为 0 → 匹配条件写错（五元组）；计数在涨 → 匹配上了，问题在后续（NAT/路由/应用）。
 
-### 验证清单
+#### 验证清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | 接口与域正确 | `display security-zone` | 每个业务接口归属正确的域 |
@@ -5113,7 +5114,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 | 日志记录 | `display logbuffer` | 关键拒绝动作有日志 |
 | 双机正常 | `display remote-backup status` | 主备状态正常、配置已同步 |
 
-### 实验笔记模板
+#### 实验笔记模板
 ```plain
 ## 实验：防火墙安全域 + 策略 + NAT Server
 日期：____   设备：____   版本：V5 / V7
@@ -5140,14 +5141,14 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 - V5 与 V7 命令差异大，先确认版本
 ```
 
-# 板块12 · WLAN 无线局域网与网络准入控制
+## 板块12 · WLAN 无线局域网与网络准入控制
 > 本板块对应 H3CSE-WLAN（GB0-343）与 H3CIE-WLAN 方向，同时覆盖 GB0-372 中"园区网安全技术"要求的 802.1X、MAC 认证、Portal 认证与 EAD 方案。  
 **70% 的"网络问题"其实是无线问题，而其中 70% 又是规划问题而非配置问题。**
 
 ---
 
-## 12_1 无线基础概念
-### 12_1_1 802.11 标准演进
+### 12_1 无线基础概念
+#### 12_1_1 802.11 标准演进
 | 标准 | 频段 | 最大速率 | 关键特性 |
 | --- | --- | --- | --- |
 | 802.11a | 5 GHz | 54 Mbps | OFDM |
@@ -5156,7 +5157,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 | 802.11ac（Wi-Fi 5） | 5 GHz | 6.9 Gbps | MU-MIMO、80/160 MHz、256-QAM |
 | 802.11ax（Wi-Fi 6） | 2.4 / 5 GHz | 9.6 Gbps | OFDMA、上下行 MU-MIMO、1024-QAM、TWT |
 
-### 12_1_2 2.4G 与 5G 对比
+#### 12_1_2 2.4G 与 5G 对比
 | 对比项 | 2.4 GHz | 5 GHz |
 | --- | --- | --- |
 | 可用非重叠信道 | **1、6、11（仅 3 个）** | 国内 36/40/44/48、149/153/157/161/165 |
@@ -5166,7 +5167,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 **规划原则**：高密度场景优先 5G，开启 **5G 优先（band-steering）**；2.4G 只做覆盖补盲。
 
-### ASCII：2.4G 信道复用规划
+#### ASCII：2.4G 信道复用规划
 ```plain
   信道 1     信道 6     信道 11
    [AP1]      [AP2]      [AP3]
@@ -5177,7 +5178,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
   同信道 AP 之间保持足够距离（降低同频干扰）
 ```
 
-### 12_1_3 核心术语
+#### 12_1_3 核心术语
 | 术语 | 说明 |
 | --- | --- |
 | SSID | 无线网络名称 |
@@ -5190,13 +5191,13 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 ---
 
-## 12_2 AC + Fit AP 组网配置（主流架构）
-### 12_2_1 组网前提
+### 12_2 AC + Fit AP 组网配置（主流架构）
+#### 12_2_1 组网前提
 + AP 与 AC 之间**三层可达**（或直连二层）。
 + AP 能通过 DHCP 获取 IP，且能学到 AC 地址（**Option 43**）。
 + AC 上配置 AP 的管理 VLAN 与业务 VLAN。
 
-### ASCII 拓扑
+#### ASCII 拓扑
 ```plain
    [AC] 192.168.100.1
      |  (管理 VLAN 100)
@@ -5211,8 +5212,8 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
        [无线终端 → SSID: H3C-Office → 业务 VLAN 200]
 ```
 
-### 12_2_2 配置步骤
-#### 步骤 1：AC 基础配置
+#### 12_2_2 配置步骤
+##### 步骤 1：AC 基础配置
 ```plain
 [H3C] sysname AC-01
 [AC-01] vlan 100                                    # AP 管理 VLAN
@@ -5229,7 +5230,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [AC-01-Vlan-interface200] quit
 ```
 
-#### 步骤 2：配置 DHCP（给 AP 分配地址并下发 AC 地址）
+##### 步骤 2：配置 DHCP（给 AP 分配地址并下发 AC 地址）
 ```plain
 [AC-01] dhcp enable
 [AC-01] dhcp server ip-pool AP-MGMT
@@ -5243,7 +5244,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 格式为 **80（类型）+ 07（长度）+ 0000 + 01（AC 数量）+ C0A86401（AC 的 IP 十六进制，此处为 192.168.100.1）**。  
 若 AC 与 AP **二层直连**，AP 可通过广播自动发现 AC，无需 Option 43。
 
-#### 步骤 3：创建无线服务模板（SSID）
+##### 步骤 3：创建无线服务模板（SSID）
 ```plain
 [AC-01] wlan service-template 1 crypto
 [AC-01-wlan-st-1] ssid H3C-Office
@@ -5256,7 +5257,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [AC-01-wlan-st-1] quit
 ```
 
-#### 步骤 4：创建 AP 并绑定服务模板
+##### 步骤 4：创建 AP 并绑定服务模板
 ```plain
 [AC-01] wlan ap ap-01 model WA6320                           # 型号需与实物一致
 [AC-01-wlan-ap-ap-01] serial-id 210235A1B2C3D4E5F6G7         # AP 序列号
@@ -5267,7 +5268,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [AC-01] wlan auto-persistent enable
 ```
 
-#### 步骤 5：配置射频并绑定服务模板（V7 方式）
+##### 步骤 5：配置射频并绑定服务模板（V7 方式）
 ```plain
 [AC-01] wlan ap ap-01
 [AC-01-wlan-ap-ap-01] radio 1                                # 2.4G 射频
@@ -5283,7 +5284,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [AC-01-wlan-ap-ap-01-radio-2] quit
 ```
 
-### 12_2_3 查看与验证
+#### 12_2_3 查看与验证
 ```plain
 <AC-01> display wlan ap all                         # AP 上线状态（State 为 R/M 表示正常）
 <AC-01> display wlan ap name ap-01 verbose
@@ -5315,8 +5316,8 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 ---
 
-## 12_3 无线安全与网络准入控制
-### 12_3_1 认证方式对比
+### 12_3 无线安全与网络准入控制
+#### 12_3_1 认证方式对比
 | 方式 | 安全性 | 用户体验 | 适用场景 |
 | --- | --- | --- | --- |
 | 开放 + Portal | 低 | 好（网页认证） | 访客网络 |
@@ -5325,7 +5326,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 | MAC 认证 | 低（MAC 可伪造） | 无感 | 打印机、摄像头等哑终端 |
 | Portal + 短信/微信 | 中 | 好 | 商场、酒店 |
 
-### 12_3_2 802.1X 认证配置（企业推荐）
+#### 12_3_2 802.1X 认证配置（企业推荐）
 ```plain
 # 1. 配置 RADIUS 方案
 [H3C] radius scheme RADIUS-1
@@ -5354,13 +5355,13 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [AC-01-wlan-st-2] service-template enable
 ```
 
-### 12_3_3 MAC 认证（哑终端）
+#### 12_3_3 MAC 认证（哑终端）
 ```plain
 [H3C] mac-authentication domain office
 [H3C-GigabitEthernet1/0/1] mac-authentication
 ```
 
-### 12_3_4 Portal 认证（访客）
+#### 12_3_4 Portal 认证（访客）
 ```plain
 [H3C] portal server PORTAL-1 ip 192.168.100.200 key simple H3C@Portal
 [H3C] portal web-server WEB-1 url http://192.168.100.200/portal
@@ -5370,7 +5371,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [H3C-Vlan-interface220] portal web-server WEB-1
 ```
 
-### 12_3_5 验证
+#### 12_3_5 验证
 ```plain
 <H3C> display dot1x
 <H3C> display dot1x sessions
@@ -5382,8 +5383,8 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 ---
 
-## 12_4 射频规划与优化
-### 12_4_1 关键参数
+### 12_4 射频规划与优化
+#### 12_4_1 关键参数
 | 参数 | 说明 | 建议 |
 | --- | --- | --- |
 | 信道 | 2.4G 用 1/6/11；5G 用非重叠信道 | 相邻 AP 错开 |
@@ -5392,7 +5393,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 | 速率集 | 禁用低速率可提升整体性能 | 关闭 1/2/5.5 Mbps 等低速率 |
 | 用户隔离 | 防止终端互访 | 访客网络必开 |
 
-### 12_4_2 优化配置
+#### 12_4_2 优化配置
 ```plain
 [AC-01] wlan ap ap-01
 [AC-01-wlan-ap-ap-01] radio 1
@@ -5411,7 +5412,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [AC-01-wlan-ap-ap-01] band-navigation enable
 ```
 
-### 12_4_3 自动射频优化（RRM）
+#### 12_4_3 自动射频优化（RRM）
 ```plain
 [AC-01] wlan rrm
 [AC-01-wlan-rrm] calibrate-channel self-decisive enable      # 自动信道调整
@@ -5420,14 +5421,14 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 ---
 
-## 12_5 漫游与高可靠
-### 12_5_1 漫游类型
+### 12_5 漫游与高可靠
+#### 12_5_1 漫游类型
 | 类型 | 说明 |
 | --- | --- |
 | 二层漫游 | 同一 VLAN 内，终端 IP 不变，最简单 |
 | 三层漫游 | 跨 VLAN，需 AC 间隧道或集中转发保持 IP 不变 |
 
-### 12_5_2 快速漫游优化
+#### 12_5_2 快速漫游优化
 + **802.11r**（快速 BSS 切换）：减少重认证时间。
 + **802.11k**（邻居报告）：帮助终端快速发现候选 AP。
 + **802.11v**（网络辅助切换）：网络侧引导终端切换。
@@ -5437,14 +5438,14 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 [AC-01-wlan-st-1] ft enable                        # 开启 802.11r 快速漫游
 ```
 
-### 12_5_3 AC 高可靠
+#### 12_5_3 AC 高可靠
 + **AC 1+1 备份 / N+1 备份**：主 AC 故障时 AP 切换到备 AC。
 + **双链路备份**：AP 配置主备 AC 地址。
 
 ---
 
-## 12_6 无线排障与验证清单
-### 排障分层法（无线专用）
+### 12_6 无线排障与验证清单
+#### 排障分层法（无线专用）
 ```plain
 第1步 终端能看到 SSID 吗？      → 看不到：AP 未上线 / 射频未开 / SSID 未广播
 第2步 能连上但拿不到 IP 吗？    → DHCP 问题（业务 VLAN / 中继 / 地址池）
@@ -5454,7 +5455,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 第6步 走动时掉线？              → 漫游配置 / 切换阈值
 ```
 
-### 典型故障对照表
+#### 典型故障对照表
 | 现象 | 检查 | 处理 |
 | --- | --- | --- |
 | AP 不上线 | `display wlan ap all` | 查 Option 43、三层可达性、UDP 5246/5247 |
@@ -5464,7 +5465,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 | 部分终端连不上 | 固件/驱动兼容性 | 调整加密方式、关闭 802.11r 测试 |
 | 漫游掉线 | 漫游配置 | 检查 AC 间隧道、VLAN 一致性 |
 
-### 📌 案例手记：会议室里"信号满格却开不了视频会"
+#### 📌 案例手记：会议室里"信号满格却开不了视频会"
 现象：某大型会议室，终端显示 Wi-Fi 信号满格，但视频会议卡顿严重，speedtest 只有 2 Mbps。
 
 排查：
@@ -5482,7 +5483,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 
 **结论**：**无线的瓶颈通常在空口（信道、干扰、终端分布）而不在带宽。规划比配置更重要。**
 
-### 验证清单
+#### 验证清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | AP 全部上线 | `display wlan ap all` | State 为 R/M |
@@ -5495,7 +5496,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 | 漫游正常 | 走动测试 | 不掉线、不重新认证 |
 | 用户隔离生效 | 访客网互 ping | 不通 |
 
-### 实验笔记模板
+#### 实验笔记模板
 ```plain
 ## 实验：AC + Fit AP 部署与无线优化
 日期：____   设备：AC____ AP 型号____
@@ -5526,14 +5527,14 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 - 用户隔离会影响投屏、共享类应用
 ```
 
-# 板块13 · 网络运维管理：监控、日志、镜像与设备生命周期
+## 板块13 · 网络运维管理：监控、日志、镜像与设备生命周期
 > 本板块重构为一份"日常运维 + 生命周期管理 + 可视化监控"的完整体系。  
 目标：把"救火式运维"变成"可预期、可追溯、可预防"的体系化运维。
 
 ---
 
-## 13_1 设备信息采集与过保查询
-### 13_1_1 关键采集命令
+### 13_1 设备信息采集与过保查询
+#### 13_1_1 关键采集命令
 ```plain
 <H3C> display device manuinfo              # 查看出厂日期和序列号（过保查询用）
 <H3C> display version                      # 查看设备版本与运行时长
@@ -5542,7 +5543,7 @@ RBM（Remote Backup Management）实现防火墙双机热备，主设备故障�
 <H3C> display elabel                       # 电子标签（含序列号，部分型号）
 ```
 
-### 采集示例
+#### 采集示例
 ```plain
 <H3C> display device manuinfo
 Slot 1 CPU 0:
@@ -5552,18 +5553,18 @@ MANUFACTURING DATE  : 2021-05-18
 VENDOR NAME         : H3C
 ```
 
-### 13_1_2 过保查询
+#### 13_1_2 过保查询
 查询地址：官方服务与维保查询入口（如 `http://es.h3c.com/entitlement/`）。  
 输入设备序列号（Bar Code / Serial Number）即可查询维保状态与截止时间。
 
-### 服务状态说明
+#### 服务状态说明
 | 服务状态 | 说明 |
 | --- | --- |
 | 有效 | 服务开始日期早于或等于当前日期，服务结束日期大于或等于当前日期，设备可以正常享有合同所规定的服务 |
 | 无效 | 服务结束日期早于当前日期，服务已经结束，设备不可享有合同所规定的服务 |
 | 取消 | 由于各种原因合同被取消，不作为服务依据 |
 
-### 设备台账模板（运维必备）
+#### 设备台账模板（运维必备）
 | 字段 | 示例 | 用途 |
 | --- | --- | --- |
 | 设备名称 | Core-SW-01 | 唯一标识 |
@@ -5581,14 +5582,14 @@ VENDOR NAME         : H3C
 
 ---
 
-## 13_2 固件下载与升级流程
-### 13_2_1 官方获取渠道
+### 13_2 固件下载与升级流程
+#### 13_2_1 官方获取渠道
 + 官方网站的软件下载区（路由器 / 交换机 / 安全产品分类）。
 + 涉及维保设备的升级，建议通过官方技术支持或代理商获取版本与补丁，**避免用到不匹配的公版软件**。
 
 > 下载通常需要账号权限；账号与权限政策以官网当前公布方式为准。
 
-### 13_2_2 升级完整流程（与板块1 的 1_6 配套）
+#### 13_2_2 升级完整流程（与板块1 的 1_6 配套）
 ```plain
 # 1. 升级前检查
 <H3C> display version                                  # 确认当前版本
@@ -5619,7 +5620,7 @@ VENDOR NAME         : H3C
 <H3C> dir /all
 ```
 
-### 13_2_3 升级风险控制
+#### 13_2_3 升级风险控制
 | 风险 | 控制措施 |
 | --- | --- |
 | 配置丢失 | 升级前 `save` + TFTP 导出配置 |
@@ -5630,8 +5631,8 @@ VENDOR NAME         : H3C
 
 ---
 
-## 13_3 运维三件套：NTP、LLDP、日志
-### 13_3_1 NTP 时间同步（一切审计的前提）
+### 13_3 运维三件套：NTP、LLDP、日志
+#### 13_3_1 NTP 时间同步（一切审计的前提）
 ```plain
 [H3C] ntp-service enable
 [H3C] ntp-service unicast-server 192.168.100.1
@@ -5643,7 +5644,7 @@ VENDOR NAME         : H3C
 
 > **为什么必须先做 NTP**：日志、审计、故障回溯都依赖时间戳。没有 NTP 的设备，其日志在事件关联时基本无用。
 
-### 13_3_2 LLDP（邻居发现，画拓扑的利器）
+#### 13_3_2 LLDP（邻居发现，画拓扑的利器）
 ```plain
 [H3C] lldp global enable
 [H3C] interface range g1/0/1 to g1/0/48
@@ -5661,7 +5662,7 @@ VENDOR NAME         : H3C
 + 核对台账与实际连接是否一致。
 + 定位"这根线到底连到哪台设备的哪个口"。
 
-### 13_3_3 日志与信息中心
+#### 13_3_3 日志与信息中心
 ```plain
 [H3C] info-center enable
 [H3C] info-center loghost 192.168.100.50 facility local5
@@ -5688,15 +5689,15 @@ VENDOR NAME         : H3C
 
 ---
 
-## 13_4 端口镜像与 Telemetry
-### 13_4_1 本地镜像（已在板块3 出现，此处补运维视角）
+### 13_4 端口镜像与 Telemetry
+#### 13_4_1 本地镜像（已在板块3 出现，此处补运维视角）
 ```plain
 [H3C] mirroring-group 1 local
 [H3C] mirroring-group 1 mirroring-port g1/0/1 both
 [H3C] mirroring-group 1 monitor-port g1/0/24
 ```
 
-### 13_4_2 NetStream / NetFlow（流量分析）
+#### 13_4_2 NetStream / NetFlow（流量分析）
 ```plain
 [H3C] sampler 1 mode random packet-interval 100      # 采样
 [H3C] ip netstream export source interface Vlan-interface 99
@@ -5711,7 +5712,7 @@ VENDOR NAME         : H3C
 
 **用途**：看清"谁在跑流量、跑的是什么、走了哪条路"，用于容量规划与异常流量定位。
 
-### 13_4_3 Telemetry（新一代监控）
+#### 13_4_3 Telemetry（新一代监控）
 Telemetry 是**主动推送**的监控方式（相比 SNMP 轮询），秒级甚至亚秒级采集，适合大规模网络与自动化运维。
 
 ```plain
@@ -5732,8 +5733,8 @@ Telemetry 是**主动推送**的监控方式（相比 SNMP 轮询），秒级甚
 
 ---
 
-## 13_5 批量运维与自动化
-### 13_5_1 批量备份配置（脚本思路）
+### 13_5 批量运维与自动化
+#### 13_5_1 批量备份配置（脚本思路）
 ```bash
 #!/bin/bash
 # 批量备份脚本示例：从设备列表读取 IP，通过 TFTP 拉取配置
@@ -5747,7 +5748,7 @@ for IP in $DEVICES; do
 done
 ```
 
-### 13_5_2 批量检查（Python + SSH 思路）
+#### 13_5_2 批量检查（Python + SSH 思路）
 ```python
 # 批量执行 display 命令并保存输出（示意）
 # pip install paramiko
@@ -5769,7 +5770,7 @@ for ip in devices:
 
 > **运维纪律**：批量脚本先在**一台设备上验证**，确认无误再全网执行；批量变更必须分批进行，留出观察窗口。
 
-### 13_5_3 配置合规检查清单
+#### 13_5_3 配置合规检查清单
 | 检查项 | 命令 | 频率 |
 | --- | --- | --- |
 | 版本与补丁 | `display version` | 季度 |
@@ -5784,8 +5785,8 @@ for ip in devices:
 
 ---
 
-## 13_6 设备生命周期管理
-### 生命周期阶段与动作
+### 13_6 设备生命周期管理
+#### 生命周期阶段与动作
 | 阶段 | 关键动作 | 关注点 |
 | --- | --- | --- |
 | 入网 | 台账登记、模板配置、命名规范、NTP/日志 | 不裸机上线 |
@@ -5793,7 +5794,7 @@ for ip in devices:
 | 维保 | 续保预警、备件准备 | 到期前 3 个月启动 |
 | 退役 | 数据清除（`restore default`）、资产核销 | 配置与账号彻底清除 |
 
-### 巡检清单（月度）
+#### 巡检清单（月度）
 ```plain
 □ 设备台账是否与现网一致（用 LLDP 核对接线）
 □ 所有设备 CPU / 内存是否在正常区间
@@ -5807,7 +5808,7 @@ for ip in devices:
 □ License 是否即将到期
 ```
 
-### 📌 案例手记：台账不准，一次割接差点翻车
+#### 📌 案例手记：台账不准，一次割接差点翻车
 某核心交换机升级，工程师按台账判断"GE1/0/24 是上联口，割接时断这里没问题"。
 
 结果断掉后，半个园区网中断——**GE1/0/24 实际接的是汇聚交换机**，台账是三年前画的，中间改过线没更新。
@@ -5828,8 +5829,8 @@ for ip in devices:
 
 ---
 
-## 13_7 实验笔记模板与验收清单
-### 笔记模板
+### 13_7 实验笔记模板与验收清单
+#### 笔记模板
 ```plain
 ## 实验：运维体系搭建（NTP + LLDP + 日志 + 备份）
 日期：____   设备：____
@@ -5856,7 +5857,7 @@ for ip in devices:
 - 批量脚本先单机验证
 ```
 
-### 验收清单
+#### 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | 时间同步 | `display ntp-service status` | 已同步，时区正确 |
@@ -5868,14 +5869,14 @@ for ip in devices:
 | 台账准确 | 台账 vs LLDP | 一致 |
 | 维保可控 | 官方查询 | 无临期未处理设备 |
 
-# 板块14 · 网络故障排查方法论与综合排错实验
+## 板块14 · 网络故障排查方法论与综合排错实验
 > 本板块是 H3CIE-RS+ 实验室考试（HL0-202，限定时间真机排障）的核心训练内容，也是区分"会配命令"与"能解决问题"的分水岭。  
 核心纪律：**单点修改、逐项验证。**
 
 ---
 
-## 14_1 排障方法论：三种模型
-### 14_1_1 分层法（最常用）
+### 14_1 排障方法论：三种模型
+#### 14_1_1 分层法（最常用）
 按 OSI 模型自下而上或自上而下逐层排除：
 
 | 层级 | 检查内容 | 关键命令 |
@@ -5891,7 +5892,7 @@ for ip in devices:
 + **自上而下**：适用于"能 ping 通但业务不可用"（先确认应用，再看是否被策略拦截）。
 + **分而治之（二分法）**：沿流量路径取中点测试，一次排除一半，适用于长链路。
 
-### 14_1_2 对比法
+#### 14_1_2 对比法
 找一台"正常的"设备 / 端口 / 用户，与故障对象逐项对比配置：
 
 ```plain
@@ -5900,11 +5901,11 @@ for ip in devices:
 # 逐行 diff，差异点就是嫌疑点
 ```
 
-### 14_1_3 替换法
+#### 14_1_3 替换法
 用确定正常的部件替代可疑部件（网线、模块、端口、设备），逐步收敛。  
 **注意：一次只改一个变量**，否则无法确定根因。
 
-### 14_1_4 排障五步流程（建议固化成习惯）
+#### 14_1_4 排障五步流程（建议固化成习惯）
 ```plain
 1. 收集现象：谁、什么时候、访问什么、用什么方式、报错是什么
 2. 确定范围：单台终端？单 VLAN？单栋楼？全网？
@@ -5917,8 +5918,8 @@ for ip in devices:
 
 ---
 
-## 14_2 诊断命令工具箱
-### 14_2_1 连通性测试
+### 14_2 诊断命令工具箱
+#### 14_2_1 连通性测试
 ```plain
 <H3C> ping 192.168.1.1
 <H3C> ping -a 192.168.10.1 192.168.20.1        # 指定源地址（最重要！）
@@ -5929,7 +5930,7 @@ for ip in devices:
 
 > `-a` 参数是最容易被忽略但最重要的技巧：不带源地址 ping 时，设备用**出接口地址**作源，可能掩盖回程路由问题。用 `-a` 指定内网地址，才能真实模拟业务流量。
 
-### 14_2_2 信息查看与过滤
+#### 14_2_2 信息查看与过滤
 ```plain
 <H3C> display interface brief | include DOWN               # 快速找出 DOWN 端口
 <H3C> display current-configuration | begin user-interface # 从某处开始看
@@ -5940,7 +5941,7 @@ for ip in devices:
 <H3C> display logbuffer | exclude INFO                     # 只看非 INFO 日志
 ```
 
-### 14_2_3 实时诊断
+#### 14_2_3 实时诊断
 ```plain
 <H3C> terminal monitor                # 开启日志实时显示（远程登录时默认关闭）
 <H3C> terminal debugging
@@ -5954,7 +5955,7 @@ for ip in devices:
 
 > **调试命令警告**：`debugging` 会大量消耗 CPU，生产环境慎用；用完必须 `undo debugging all`。在 IE 实验中，不必要的 debugging 可能导致设备卡顿，反而浪费时间。
 
-### 14_2_4 抓包
+#### 14_2_4 抓包
 ```plain
 # 本地镜像抓包
 [H3C] mirroring-group 1 local
@@ -5967,8 +5968,8 @@ for ip in devices:
 
 ---
 
-## 14_3 分层排查手册
-### 14_3_1 物理层故障
+### 14_3 分层排查手册
+#### 14_3_1 物理层故障
 | 现象 | 检查 | 处理 |
 | --- | --- | --- |
 | 端口 DOWN | `display interface brief` | 换线、换模块、查对端 |
@@ -5977,7 +5978,7 @@ for ip in devices:
 | 端口频繁 UP/DOWN | `display logbuffer` | 线缆接触不良、模块故障、光衰过大 |
 | 光功率异常 | `display transceiver diagnosis` | 换模块、清洁光纤接头 |
 
-### 14_3_2 二层故障
+#### 14_3_2 二层故障
 | 现象 | 检查 | 处理 |
 | --- | --- | --- |
 | 同网段不通 | `display vlan`、`display mac-address` | 核对 VLAN 与端口类型 |
@@ -5986,7 +5987,7 @@ for ip in devices:
 | MAC 表震荡 | `display mac-address mac-move` | 查环路或 MAC 漂移攻击 |
 | 广播风暴 | `display interface`（广播计数） | 查环路、开风暴抑制 |
 
-### 14_3_3 三层故障
+#### 14_3_3 三层故障
 | 现象 | 检查 | 处理 |
 | --- | --- | --- |
 | 有直连但 ping 不通网关 | `display arp` | ARP 未解析，查二层 |
@@ -5996,7 +5997,7 @@ for ip in devices:
 | 能 ping 通但打不开网页 | DNS / ACL / MTU | 查 DNS、ACL、MSS |
 | 路由不优（次优路径） | `display ip routing-table verbose` | 查路由策略与引入 |
 
-### 14_3_4 应用层故障
+#### 14_3_4 应用层故障
 | 现象 | 检查 | 处理 |
 | --- | --- | --- |
 | 网页打不开但 ping 通 | DNS 解析 | `display dns server`、终端 nslookup |
@@ -6006,8 +6007,8 @@ for ip in devices:
 
 ---
 
-## 14_4 典型场景库（排障训练用）
-### 场景 1：终端拿不到 IP 地址
+### 14_4 典型场景库（排障训练用）
+#### 场景 1：终端拿不到 IP 地址
 ```plain
 排查链：
 第1步 终端网卡是否启用是否设置为自动获取
@@ -6019,7 +6020,7 @@ for ip in devices:
 第7步 抓包：Discover 是否发出、Offer 是否回来
 ```
 
-### 场景 2：能上网但访问内网服务器不通
+#### 场景 2：能上网但访问内网服务器不通
 ```plain
 排查链：
 第1步 同网段能通吗？（判断二层还是三层）
@@ -6031,7 +6032,7 @@ for ip in devices:
 第7步 服务器自身防火墙？
 ```
 
-### 场景 3：全网变慢，疑似环路
+#### 场景 3：全网变慢，疑似环路
 ```plain
 排查链：
 第1步 display cpu-usage（是否飙升）
@@ -6042,7 +6043,7 @@ for ip in devices:
 第6步 找到后：拔掉环路 + 开启 STP + 配置边缘端口与 BPDU 保护
 ```
 
-### 场景 4：OSPF 邻居起不来
+#### 场景 4：OSPF 邻居起不来
 ```plain
 排查链：
 第1步 display interface brief（接口 UP 吗）
@@ -6053,7 +6054,7 @@ for ip in devices:
 第6步 对照十大原因逐项排查
 ```
 
-### 场景 5：VPN 隧道建立后业务不通
+#### 场景 5：VPN 隧道建立后业务不通
 ```plain
 排查链：
 第1步 display ike sa / display ipsec sa（阶段一/二是否正常）
@@ -6064,7 +6065,7 @@ for ip in devices:
 第6步 MTU/MSS 是否导致大包不通
 ```
 
-### 📌 案例手记：一个"不可能"的故障——能 ping 通网关，却 ping 不通网关上的另一个地址
+#### 📌 案例手记：一个"不可能"的故障——能 ping 通网关，却 ping 不通网关上的另一个地址
 现象：终端 192.168.10.10 能 ping 通网关 192.168.10.1，但 ping 不通同设备上的管理地址 192.168.99.254。
 
 排查：
@@ -6079,7 +6080,7 @@ for ip in devices:
 
 ---
 
-## 14_5 排错报告模板（IE 面试与项目交付用）
+### 14_5 排错报告模板（IE 面试与项目交付用）
 ```plain
 ## 网络故障排查报告
 
@@ -6124,8 +6125,8 @@ for ip in devices:
 
 ---
 
-## 14_6 实验考试四阶段训练法
-### 阶段一：基础命令自动化（1~2 周）
+### 14_6 实验考试四阶段训练法
+#### 阶段一：基础命令自动化（1~2 周）
 目标：**不看文档能在 30 秒内敲出任何 display 命令**。
 
 训练方式：
@@ -6147,7 +6148,7 @@ for ip in devices:
 - 看 CPU/内存 → display cpu-usage / display memory
 ```
 
-### 阶段二：单点故障速排（2~4 周）
+#### 阶段二：单点故障速排（2~4 周）
 目标：**每个典型故障能在 5 分钟内定位**。
 
 训练方式：在 HCL 中人为注入单点故障，自己计时排查：
@@ -6161,12 +6162,12 @@ for ip in devices:
 | DHCP 中继地址错 | 5 分钟 |
 | STP 阻塞 | 5 分钟 |
 
-### 阶段三：多故障综合（2~3 个月）
+#### 阶段三：多故障综合（2~3 个月）
 目标：**在多个故障并存时不慌乱**。
 
 训练方式：一次注入 3~5 个不同层次的故障，按五步流程逐个击破，**每修一个就验证一个**。
 
-### 阶段四：全真模拟 + 报告（1~2 个月）
+#### 阶段四：全真模拟 + 报告（1~2 个月）
 目标：**限时完成 + 规范输出**。
 
 训练方式：
@@ -6180,7 +6181,7 @@ for ip in devices:
 6. 复盘：哪些地方慢了？为什么？
 ```
 
-### 时间管理建议（以 6 小时实验为例）
+#### 时间管理建议（以 6 小时实验为例）
 | 阶段 | 时间分配 | 说明 |
 | --- | --- | --- |
 | 读题与规划 | 30 分钟 | 看清需求，画出检查表 |
@@ -6193,7 +6194,7 @@ for ip in devices:
 
 ---
 
-## 14_7 本板块验收清单
+### 14_7 本板块验收清单
 | 验收项 | 方法 | 达标标准 |
 | --- | --- | --- |
 | 掌握三种排障模型 | 复述 + 应用 | 能说出各自适用场景 |
@@ -6203,14 +6204,14 @@ for ip in devices:
 | 报告规范 | 写一份完整报告 | 含证据链、根因、改进建议 |
 | 时间管理 | 全真模拟 | 在限定时间内完成 |
 
-# 板块15 · 综合实战：从中小企业网到大型园区网（含项目交付与面试）
+## 板块15 · 综合实战：从中小企业网到大型园区网（含项目交付与面试）
 > 本板块是整份知识库的"收敛层"：把前 14 个板块的技术点组装成三个可交付的完整方案，并补齐工程师最容易缺失的两项能力——**项目实施与割接**与**技术方案表达**。  
 对应 H3CNE 综合实验、H3CSE 园区网设计、H3CIE 技术面试三大场景。
 
 ---
 
-## 15_1 综合实验一：中小企业单核心组网（NE 级别）
-### 15_1_1 ASCII 拓扑
+### 15_1 综合实验一：中小企业单核心组网（NE 级别）
+#### 15_1_1 ASCII 拓扑
 ```plain
                         [Internet]
                              |
@@ -6239,7 +6240,7 @@ for ip in devices:
   业务 VLAN：10 办公 / 20 财务 / 30 监控 / 40 无线 / 99 管理
 ```
 
-### 15_1_2 需求分析
+#### 15_1_2 需求分析
 | 需求 | 实现方式 |
 | --- | --- |
 | 部门隔离 | VLAN10（办公）、VLAN20（财务）、VLAN30（监控）、VLAN99（管理） |
@@ -6249,7 +6250,7 @@ for ip in devices:
 | 远程管理 | SSH + ACL 限制运维网段 |
 | 无线覆盖 | AC 管理 AP，独立 SSID 与业务 VLAN40 |
 
-### 15_1_3 规划表（项目交付必须先行输出）
+#### 15_1_3 规划表（项目交付必须先行输出）
 **VLAN 与地址规划**
 
 | VLAN ID | 名称 | 网段 | 网关 | 用途 | 端口范围 |
@@ -6269,7 +6270,7 @@ for ip in devices:
 | ACC-SW-B | 192.168.99.12 | 接入 B |
 | MSR-Router | 192.168.99.1 | 出口路由器 |
 
-### 15_1_4 核心交换机配置（完整）
+#### 15_1_4 核心交换机配置（完整）
 ```plain
 <H3C> system-view
 [H3C] sysname Core-SW-01
@@ -6382,7 +6383,7 @@ for ip in devices:
 [Core-SW-01] save force
 ```
 
-### 15_1_5 接入交换机配置
+#### 15_1_5 接入交换机配置
 ```plain
 <H3C> system-view
 [H3C] sysname ACC-SW-A
@@ -6438,7 +6439,7 @@ for ip in devices:
 [ACC-SW-A] save force
 ```
 
-### 15_1_6 出口路由器配置
+#### 15_1_6 出口路由器配置
 ```plain
 <H3C> system-view
 [H3C] sysname MSR-Router
@@ -6467,7 +6468,7 @@ for ip in devices:
 [MSR-Router] save force
 ```
 
-### 15_1_7 验收清单
+#### 15_1_7 验收清单
 | 验收项 | 命令 / 方法 | 达标标准 |
 | --- | --- | --- |
 | VLAN 与网关 | `display ip interface brief` | 各 Vlan-interface UP，IP 正确 |
@@ -6481,8 +6482,8 @@ for ip in devices:
 
 ---
 
-## 15_2 综合实验二：双核心园区网（SE 级别）
-### 15_2_1 设计要点
+### 15_2 综合实验二：双核心园区网（SE 级别）
+#### 15_2_1 设计要点
 ```plain
                     [出口防火墙] ── [Internet]
                        |      |
@@ -6504,7 +6505,7 @@ for ip in devices:
 | 路由 | 核心与出口间跑 OSPF | 便于扩展与故障收敛 |
 | 管理 | 独立管理 VLAN + SSH + 堡垒机 | 符合等保 |
 
-### 15_2_2 关键配置片段
+#### 15_2_2 关键配置片段
 ```plain
 # ===== 核心 MSTP 负载分担 =====
 [Core-A] stp region-configuration
@@ -6552,7 +6553,7 @@ for ip in devices:
 [Core-A-ospf-1] default-route-advertise
 ```
 
-### 15_2_3 验收清单
+#### 15_2_3 验收清单
 | 验收项 | 命令 | 达标标准 |
 | --- | --- | --- |
 | IRF/聚合正常 | `display irf` / `display link-aggregation verbose` | 一主一备；成员口 Selected |
@@ -6565,8 +6566,8 @@ for ip in devices:
 
 ---
 
-## 15_3 割接实施（项目交付的关键动作）
-### 15_3_1 割接前准备清单
+### 15_3 割接实施（项目交付的关键动作）
+#### 15_3_1 割接前准备清单
 ```plain
 □ 现网信息采集完整（配置、拓扑、台账、LLDP 核对）
 □ 新方案设计通过评审（含回退方案）
@@ -6578,7 +6579,7 @@ for ip in devices:
 □ 联系方式畅通（客户、厂商、运营商）
 ```
 
-### 15_3_2 割接实施步骤
+#### 15_3_2 割接实施步骤
 ```plain
 T-60 分钟：最终确认（设备状态、回退物资、人员到位）
 T-30 分钟：备份现网配置（本地 + 远端双份）
@@ -6590,14 +6591,14 @@ T-0      ：开始割接（按脚本逐段执行）
 确认无误：清理临时配置、更新台账、签署验收单
 ```
 
-### 15_3_3 割接中的"三线"原则
+#### 15_3_3 割接中的"三线"原则
 | 线 | 说明 |
 | --- | --- |
 | **时间线** | 每个步骤有预估时间，超时立即评估是否回退 |
 | **回退线** | 设定明确的回退触发条件（如"XX 业务 30 分钟内未恢复即回退"） |
 | **验证线** | 每步必验，不验证不进入下一步 |
 
-### 📌 案例手记：一次没有回退线的割接
+#### 📌 案例手记：一次没有回退线的割接
 某园区网核心替换，工程师计划 4 小时完成。实际执行到第 3 小时，发现新核心与旧接入交换机的聚合协商不成功，反复调整无果。
 
 因为没有设定"回退触发条件"，团队一直"再试一次"，直到业务方施压才回退，此时已超窗口 2 小时，第二天业务高峰受影响。
@@ -6610,8 +6611,8 @@ T-0      ：开始割接（按脚本逐段执行）
 
 ---
 
-## 15_4 变更风险与回退方案
-### 15_4_1 风险评估矩阵
+### 15_4 变更风险与回退方案
+#### 15_4_1 风险评估矩阵
 | 风险 | 影响 | 概率 | 控制措施 |
 | --- | --- | --- | --- |
 | 配置丢失 | 高 | 中 | 变更前双备份（本地 + 远端） |
@@ -6620,7 +6621,7 @@ T-0      ：开始割接（按脚本逐段执行）
 | 接线错误 | 中 | 中 | LLDP 核对 + 标签 |
 | 回退失败 | 高 | 低 | 回退方案提前演练 |
 
-### 15_4_2 回退方案模板
+#### 15_4_2 回退方案模板
 ```plain
 ## 变更回退方案
 
@@ -6645,7 +6646,7 @@ T-0      ：开始割接（按脚本逐段执行）
 - 重新预约窗口
 ```
 
-### 15_4_3 变更操作纪律
+#### 15_4_3 变更操作纪律
 1. **变更前必备份**：`save` + TFTP 导出。
 2. **单点修改**：一次改一处，改完立即验证。
 3. **不跳过验证**：每个关键步骤后跑验收命令。
@@ -6655,8 +6656,8 @@ T-0      ：开始割接（按脚本逐段执行）
 
 ---
 
-## 15_5 面试汇报与技术方案表达
-### 15_5_1 技术面试的评分逻辑
+### 15_5 面试汇报与技术方案表达
+#### 15_5_1 技术面试的评分逻辑
 | 维度 | 考察点 | 表现方式 |
 | --- | --- | --- |
 | 技术深度 | 是否理解原理与边界 | 能说清"为什么这样选"与"代价是什么" |
@@ -6665,7 +6666,7 @@ T-0      ：开始割接（按脚本逐段执行）
 | 应变能力 | 被追问时的反应 | 承认不知道的部分，但给出排查思路 |
 | 项目经验 | 是否真做过 | 能说出具体的坑与解决办法 |
 
-### 15_5_2 方案汇报的"黄金结构"
+#### 15_5_2 方案汇报的"黄金结构"
 ```plain
 1. 背景与需求（1 分钟）
    客户是谁、网络规模、业务特点、核心诉求
@@ -6686,7 +6687,7 @@ T-0      ：开始割接（按脚本逐段执行）
    用什么命令、什么方法证明方案达标
 ```
 
-### 15_5_3 常见追问与应答要点
+#### 15_5_3 常见追问与应答要点
 | 追问 | 应答要点 |
 | --- | --- |
 | 为什么用 IRF 不用 M-LAG？ | 园区网允许分钟级维护窗口，IRF 更简单、运维成本低；若客户要求零中断则改 M-LAG |
@@ -6695,7 +6696,7 @@ T-0      ：开始割接（按脚本逐段执行）
 | VRRP 为什么要 track 上行口？ | 避免主设备上行断了但仍占 Master，导致流量黑洞 |
 | 割接失败怎么办？ | 说清触发条件与回退步骤，强调保留物理回退能力 |
 
-### 📌 案例手记：30 分钟面试，讲技术还是讲故事？
+#### 📌 案例手记：30 分钟面试，讲技术还是讲故事？
 某次 IE 面试，候选人把 OSPF 的 LSA 类型倒背如流，但被问到"如果让你重新设计这个网络，你会改哪里"时卡住了。
 
 反例与正例：
@@ -6707,8 +6708,8 @@ T-0      ：开始割接（按脚本逐段执行）
 
 ---
 
-## 15_6 交付文档清单
-### 必交付文档
+### 15_6 交付文档清单
+#### 必交付文档
 | 文档 | 内容 | 用途 |
 | --- | --- | --- |
 | 需求调研表 | 现状、需求、约束 | 项目基线 |
@@ -6722,7 +6723,7 @@ T-0      ：开始割接（按脚本逐段执行）
 | 运维手册 | 巡检项、常见故障处理 | 日常运维 |
 | 培训材料 | 拓扑说明、关键操作 | 客户赋能 |
 
-### 验收报告模板
+#### 验收报告模板
 ```plain
 ## 项目验收报告
 
@@ -6748,7 +6749,7 @@ T-0      ：开始割接（按脚本逐段执行）
 
 ---
 
-## 15_7 全流程验收清单（本板块总结）
+### 15_7 全流程验收清单（本板块总结）
 | 阶段 | 验收项 | 达标标准 |
 | --- | --- | --- |
 | 设计 | 规划表完整 | VLAN、IP、端口、命名全部明确 |
@@ -6759,7 +6760,7 @@ T-0      ：开始割接（按脚本逐段执行）
 | 表达 | 能讲清方案 | 黄金结构 6 段完整，能应对追问 |
 | 沉淀 | 笔记完成 | 用四段式模板记录，含踩坑与边界 |
 
-### 收官建议
+#### 收官建议
 ```plain
 学完 15 个板块后，做三件事检验成果：
 
